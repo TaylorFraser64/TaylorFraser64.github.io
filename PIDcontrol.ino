@@ -68,6 +68,16 @@ int arrayStatus = 0;
 //Stores the previous direction the robot was moving. Used when robot loses sight of line.
 int previousDirection = 0;
 
+//Stores the error for use in PID control
+int error = 0;
+int PID = 0;
+int Kp = 0;
+int Proportional = 0;
+int Ki = 0;
+int Integral = 0;
+int Kd = 0;
+int Derivative = 0;
+int previousError = 0;
 
 //FUNCTION DECLARATIONS
 
@@ -79,6 +89,9 @@ int encodeBinaryToDecimal (int,int,int,int,int);
 
 //Function to activate and control motors
 int drive(int myDirection, int mySpeed);
+
+//Function to get the current Error for the PID controller
+int getError(int,int,int,int,int);
 
 
 void setup() {
@@ -178,167 +191,26 @@ tapeStatus_2 = tapeDiscriminator(sensorMin_2,sensorMax_2,sensorValue_2);
 tapeStatus_3 = tapeDiscriminator(sensorMin_3,sensorMax_3,sensorValue_3);
 tapeStatus_4 = tapeDiscriminator(sensorMin_4,sensorMax_4,sensorValue_4);
 
-//Represent sensor tape readings as represenative binary number
-arrayStatus = encodeBinaryToDecimal(tapeStatus_0, tapeStatus_1, tapeStatus_2, tapeStatus_3, tapeStatus_4);
 
-//Print to serial monitor
-Serial.print("\n");
-Serial.print(tapeStatus_0);
-Serial.print(tapeStatus_1);
-Serial.print(tapeStatus_2);
-Serial.print(tapeStatus_3);
-Serial.print(tapeStatus_4);
-Serial.print("       ");
-Serial.print(arrayStatus);
+ 
+//PID Control
+error=getError(tapeStatus_0,tapeStatus_1,tapeStatus_2,tapeStatus_3,tapeStatus_4);
+Proportional = error;
+Integral = Integral + error;
+Derivative = error - previousError;
+PID = (Kp*P) + (Ki*I) + (Kd*D);
+previousError = error;
 
-//Switch Statement Start
- //Robot has 5 sensors. "1" represents a sensor seeing tape, "0" represents a sensor seeing white space.
- //1s and 0s are put together in a binary number, and translated to secimal. There are a total of 31 combinations, for deimal numbers 0 - 31.
- //If statements could have been used here, but this method provides finer control.
-/*
- * 0 1 2 3 4 - sensors
- * 
- * 0 0 0 0 0  0       ^Robot's forward Direction
- * 0 0 0 0 1  1
- * 0 0 0 1 0  2
- * 0 0 0 1 1  3
- * 0 0 1 0 0  4
- * 0 0 1 0 1  5
- * 0 0 1 1 0  6
- * 0 0 1 1 1  7
- * 0 1 0 0 0  8
- * 0 1 0 0 1  9
- * 0 1 0 1 0  10
- * 0 1 0 1 1  11
- * 0 1 1 0 0  12
- * 0 1 1 0 1  13
- * 0 1 1 1 0  14
- * 0 1 1 1 1  15
- * 1 0 0 0 0  16
- * 1 0 0 0 1  17
- * 1 0 0 1 0  18
- * 1 0 0 1 1  19
- * 1 0 1 0 0  20
- * 1 0 1 0 1  21
- * 1 0 1 1 0  22
- * 1 0 1 1 1  23
- * 1 1 0 0 0  24
- * 1 1 0 0 1  25
- * 1 1 0 1 0  26
- * 1 1 0 1 1  27
- * 1 1 1 0 0  28
- * 1 1 1 0 1  29
- * 1 1 1 1 0  30
- * 1 1 1 1 1  31
- */
-
-switch(arrayStatus){
-//Drive function is called in each switch staement. 
-//Different values are passed depending on the sensor's readings.
-//First value : 1 -> right, -1 -> left, 0 -> straight
-//Second value is PWM speed
-  case 1: //0 0 0 0 1
-    previousDirection = drive(1, 255);
-    break;
-  case 2: //0 0 0 1 0
-    previousDirection = drive(1, 128);
-    break;
-  case 3: //0 0 0 1 1
-    previousDirection = drive(1, 255);
-    break;
-  case 4: //0 0 1 0 0
-    previousDirection = drive(0, 255);
-    break;
-  case 5: //0 0 1 0 1
-    previousDirection = drive(0, 200);
-    Serial.print("Like a Zebra in a Blender, it continues");
-    break;
-  case 6: //0 0 1 1 0
-    previousDirection = drive(1, 128);
-    break;
-  case 7: //0 0 1 1 1
-    previousDirection = drive(1, 255);
-    break;
-  case 8: //0 1 0 0 0
-    previousDirection = drive(-1, 128);
-    break;
-  case 9: //0 1 0 0 1
-    previousDirection = drive(0, 100);
-    break;
-  case 10: //0 1 0 1 0
-    previousDirection = drive(0, 100);
-    break;
-  case 11: //0 1 0 1 1
-    previousDirection = drive(0, 100);
-    break;
-  case 12: //0 1 1 0 0
-    previousDirection = drive(-1, 128);
-    break;
-  case 13: //0 1 1 0 1
-    previousDirection = drive(0, 100);
-    break;
-  case 14: //0 1 1 1 0
-    previousDirection = drive(0, 100);
-    break;
-  case 15: //0 1 1 1 1
-    previousDirection = drive(0, 90);
-    break;
-  case 16: //1 0 0 0 0
-    previousDirection = drive(-1, 255);
-    break;
-  case 17: //1 0 0 0 1
-    previousDirection = drive(0, 100);
-    break;
-  case 18: //1 0 0 1 0
-    previousDirection = drive(0, 100);
-    break;
-  case 19: //1 0 0 1 1
-    previousDirection = drive(0, 100);
-    break;
-  case 20: //1 0 1 0 0
-    previousDirection = drive(0, 100);
-    break;
-  case 21: //1 0 1 0 1
-    previousDirection = drive(0, 100);
-    break;
-  case 22: //1 0 1 1 0
-    previousDirection = drive(0, 100);
-    break;
-  case 23: //1 0 1 1 1
-    previousDirection = drive(0, 100);
-    break;
-  case 24: //1 1 0 0 0
-    previousDirection = drive(-1, 255);
-    break;
-  case 25: //1 1 0 0 1
-    previousDirection = drive(0, 100);
-    break;
-  case 26: //1 1 0 1 0
-    previousDirection = drive(0, 100);
-    break;
-  case 27: //1 1 0 1 1
-    previousDirection = drive(0, 255);
-    break;
-  case 28: //1 1 1 0 0
-    previousDirection = drive(-1, 255);
-    break;
-  case 29: //1 1 1 0 1
-    previousDirection = drive(0, 100);
-    break;
-  case 30: //1 1 1 1 0
-    previousDirection = drive(-1, 255);
-    break;
-  case 31: //1 1 1 1 1
-    previousDirection = drive(0, 90);
-    break;
-  default: //0 0 0 0 0
-    if(previousDirection == 0){
-      previousDirection--;
-    }
-    drive(previousDirection,200);
-  
+if (PID < 1){
+ PID = PID*-1;
+ drive (-1, map(PID, 0, 4, 0, 255));
 }
-
+else if(PID == 0){
+ drive (1, map(PID, 0, 4, 0, 255));
+}
+else{
+ drive (1, 255);
+}
 delay(2); // minimum wait time for analog PWM reader to reset in between readings
 }
 
@@ -426,3 +298,36 @@ int drive(int myDirection, int mySpeed){
   delay (75); 
   return myDirection;
 }
+
+int getError( int sensor_0, int sensor_1, int sensor_2, int sensor_3, int sensor_4){
+ int error = 0;
+  if((sensor_0 == 0)&&(sensor_1 == 0)&&(sensor_2 == 0)&&(sensor_3 == 0)&&(sensor_4 == 1)){
+   error = 4;
+  }
+  else if((sensor_0 == 0)&&(sensor_1 == 0)&&(sensor_2 == 0)&&(sensor_3 == 1)&&((sensor_4 == 1)){
+   error = 3;
+  }
+  else if((sensor_0 == 0)&&(sensor_1 == 0)&&(sensor_2 == 0)&&(sensor_3 == 1)&&(sensor_4 == 1)){
+   error = 2;
+  }
+  else if((sensor_0 == 0)&&(sensor_1 == 0)&&(sensor_2 == 1)&&(sensor_3 == 1)&&(sensor_4 == 0)){
+   error = 1;
+  }
+  else if((sensor_0 == 0)&&(sensor_1 == 0)&&(sensor_2 == 1)&&(sensor_3 == 0)&&(sensor_4 == 0)){
+   error = 0;
+  }
+  else if((sensor_0 == 0)&&(sensor_1 == 1)&&(sensor_2 == 1)&&(sensor_3 == 0)&&(sensor_4 == 0)){
+   error =- 1;
+  }
+  else if((sensor_0 == 0)&&(sensor_1 == 1)&&(sensor_2 == 0)&&(sensor_3 == 0)&&(sensor_4 == 0)){
+   error = -2;
+  }
+  else if((sensor_0 == 1)&&(sensor_1 == 1)&&(sensor_2 == 0)&&(sensor_3 == 0)&&(sensor_4 == 0)){
+   error = -3;
+  }
+  else if((sensor_0 == 1)&&(sensor_1 == 0)&&(sensor_2 == 0)&&(sensor_3 == 0)&&(sensor_4 == 0)){
+   error = -4;
+  }
+  return error;
+}
+
