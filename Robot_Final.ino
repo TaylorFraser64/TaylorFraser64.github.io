@@ -1,5 +1,9 @@
-// These constants won't change. They're used to give names
-// to the pins used:
+
+//PIN DESIGNATIONS AND VARIABLE DECLARATIONS
+
+//Sensor Board Pin Designations
+ //Analog ins are for reading sensor values
+ //Analog Out's are for controlling PWM indicator LEDs
 const int analogInPin_0 = A0; // Analog input pin that the potentiometer is attached to
 const int analogOutPin_0 = 2; // Analog output pin that the LED is attached to
 const int analogInPin_1 = A1;
@@ -11,24 +15,28 @@ const int analogOutPin_3 = 12;
 const int analogInPin_4 = A4;
 const int analogOutPin_4 = 13;
 
+
+//Pin Designations for Signal light LEDs
 int LEDR = A5;
 int LEDL = 3;
 
-int sensorValue_0 = 0; // value read from the pot
+
+//Vars to store values read from sensor
+int sensorValue_0 = 0;
 int sensorValue_1 = 0;
 int sensorValue_2 = 0;
 int sensorValue_3 = 0;
 int sensorValue_4 = 0;
 
-int outputValue_0 = 0; // value output to the PWM (analog out)
+
+//Vars to store PWM values that will control sensor indicator LEDs
+int outputValue_0 = 0;
 int outputValue_1 = 0;
 int outputValue_2 = 0;
 int outputValue_3 = 0;
 int outputValue_4 = 0;
 
-
-
-//MOTOR
+//Pin Designations for Motor
 int ENABLEL = 5;
 int FORWARDL = 6;
 int BACKWARDL = 7;
@@ -36,14 +44,14 @@ int ENABLER = 8;
 int FORWARDR = 10;
 int BACKWARDR = 9;
 
-//Is there tape at sensor?
+//Is there tape at sensor? 1-> yes, 0-> no
 int tapeStatus_0 = 0;
 int tapeStatus_1 = 0;
 int tapeStatus_2 = 0;
 int tapeStatus_3 = 0;
 int tapeStatus_4 = 0;
 
-//adjusts to sensor profile
+//Sensor values vary from sensor to sensor and from ambient lighting. Adjust these to compensate.
 int sensorMin_0 = 0;
 int sensorMax_0 = 550;
 int sensorMin_1 = 0;
@@ -55,17 +63,28 @@ int sensorMax_3 = 700;
 int sensorMin_4 = 0;
 int sensorMax_4 = 700;
 
+//Decimal form of binary number representing current readings from sensor
 int arrayStatus = 0;
+
+//Stores the previous direction the robot was moving. Used when robot loses sight of line.
 int previousDirection = 0;
 
+
+//FUNCTION DECLARATIONS
+
+//Decides whether the sensor is seeing tape or empty space
 int tapeDiscriminator (int, int, int);
+
+//Translates the binary form of the sensor readings to a decimal number
 int encodeBinaryToDecimal (int,int,int,int,int);
+
+//Function to activate and control motors
 int drive(int myDirection, int mySpeed);
 
 
 void setup() {
-// initialize serial communications at 9600 bps:
-Serial.begin(9600);
+Serial.begin(9600);// initialize serial communications at 9600 bps:
+ 
 pinMode(ENABLEL,OUTPUT);
 pinMode(FORWARDL,OUTPUT);
 pinMode(BACKWARDL,OUTPUT);
@@ -75,6 +94,8 @@ pinMode(BACKWARDR,OUTPUT);
 pinMode(LEDR,OUTPUT);
 pinMode(LEDL,OUTPUT);
 
+ 
+//Motor test - moves robot forwards and backwards. Helpful for troubleshooting
 digitalWrite(ENABLEL,HIGH);
 analogWrite(FORWARDL,255);
 digitalWrite(ENABLER,HIGH);
@@ -99,7 +120,7 @@ delay(1000);
 
 
 void loop() {
-// read the analog in value:
+// read the sensor analog in value:
 sensorValue_0 = analogRead(analogInPin_0);
 sensorValue_1 = analogRead(analogInPin_1);
 sensorValue_2 = analogRead(analogInPin_2);
@@ -107,7 +128,7 @@ sensorValue_3 = analogRead(analogInPin_3);
 sensorValue_4 = analogRead(analogInPin_4);
 
 
-// map it to the range of the analog out:
+// map it to the range of the LED PWM analog out:
 outputValue_0 = map(sensorValue_0, sensorMin_0, sensorMax_0, 0, 255);
 outputValue_1 = map(sensorValue_1, sensorMin_1, sensorMax_1, 0, 255);
 outputValue_2 = map(sensorValue_2, sensorMin_2, sensorMax_2, 0, 255);
@@ -115,7 +136,7 @@ outputValue_3 = map(sensorValue_3, sensorMin_3, sensorMax_3, 0, 255);
 outputValue_4 = map(sensorValue_4, sensorMin_4, sensorMax_4, 0, 255);
 
 
-// change the analog out value:
+// Write PWM value to LEDs. Brightness of LEDs corresponds to sensor reading
 analogWrite(analogOutPin_0, outputValue_0);
 analogWrite(analogOutPin_1, outputValue_1);
 analogWrite(analogOutPin_2, outputValue_2);
@@ -123,7 +144,7 @@ analogWrite(analogOutPin_3, outputValue_3);
 analogWrite(analogOutPin_4, outputValue_4);
 
 
-// print the results to the serial monitor:
+// print the results to the serial monitor
 Serial.print("sensor = " );
 Serial.print(sensorValue_0);
 Serial.print("    " );
@@ -150,28 +171,35 @@ Serial.print(outputValue_4);
 Serial.print("    " );
 Serial.print("\n" );
 
+
+//Decide whether sensor is seeing tape or not
 tapeStatus_0 = tapeDiscriminator(sensorMin_0,sensorMax_0,sensorValue_0);
 tapeStatus_1 = tapeDiscriminator(sensorMin_1,sensorMax_1,sensorValue_1);
 tapeStatus_2 = tapeDiscriminator(sensorMin_2,sensorMax_2,sensorValue_2);
 tapeStatus_3 = tapeDiscriminator(sensorMin_3,sensorMax_3,sensorValue_3);
 tapeStatus_4 = tapeDiscriminator(sensorMin_4,sensorMax_4,sensorValue_4);
 
-
+//Represent sensor tape readings as represenative binary number
 arrayStatus = encodeBinaryToDecimal(tapeStatus_0, tapeStatus_1, tapeStatus_2, tapeStatus_3, tapeStatus_4);
 
-
+//Print to serial monitor
 Serial.print("\n");
 Serial.print(tapeStatus_0);
 Serial.print(tapeStatus_1);
 Serial.print(tapeStatus_2);
 Serial.print(tapeStatus_3);
 Serial.print(tapeStatus_4);
+Serial.print("       ");
+Serial.print(arrayStatus);
 
-//switch Statement Start
+//Switch Statement Start
+ //Robot has 5 sensors. "1" represents a sensor seeing tape, "0" represents a sensor seeing white space.
+ //1s and 0s are put together in a binary number, and translated to secimal. There are a total of 31 combinations, for deimal numbers 0 - 31.
+ //If statements could have been used here, but this method provides finer control.
 /*
- * 0 1 2 3 4
+ * 0 1 2 3 4 - sensors
  * 
- * 0 0 0 0 0  0       ^forward
+ * 0 0 0 0 0  0       ^Robot's forward Direction
  * 0 0 0 0 1  1
  * 0 0 0 1 0  2
  * 0 0 0 1 1  3
@@ -204,11 +232,12 @@ Serial.print(tapeStatus_4);
  * 1 1 1 1 0  30
  * 1 1 1 1 1  31
  */
- Serial.print("       ");
- Serial.print(arrayStatus);
-switch(arrayStatus){
 
-  //right sensor
+switch(arrayStatus){
+//Drive function is called in each switch staement. 
+//Different values are passed depending on the sensor's readings.
+//First value : 1 -> right, -1 -> left, 0 -> straight
+//Second value is PWM speed
   case 1: //0 0 0 0 1
     previousDirection = drive(1, 255);
     break;
@@ -311,21 +340,19 @@ switch(arrayStatus){
   
 }
 
-
-
-//TESTING
-
-//drive(0,255);
-//drive(1,255);
-//drive(-1,255);
-
-
-// wait 2 milliseconds before the next loop
-// for the analog-to-digital converter to settle
-// after the last reading:
-delay(2);
+delay(2); // minimum wait time for analog PWM reader to reset in between readings
 }
 
+
+
+/*Function: tapeDiscriminator()
+Purpose: decides whether sensor is reading tape or whitespace
+Passed variables:
+  myMin: sensor's custom minimum read value
+  myMax: sensor's custom maximum read value
+  sensorValue: Current value being read by sensor
+Returns: boolean 1 or 0, 1-> tape, 0-> white space
+*/
 int tapeDiscriminator (int myMin, int myMax, int sensorValue){
   
   int threshold = (myMax-myMin)/2 + myMin;
@@ -341,11 +368,26 @@ int tapeDiscriminator (int myMin, int myMax, int sensorValue){
   return myReturn;
  }
 
+
+/*Function: encodeBinaryToDecimal()
+Purpose: Takes 5 boolean sensor read values, encodes them to a decimal number representing the 5-digit binary value of their state.
+Passed variables:
+  sensor_0 to sensor_4: the boolean tape status values corresponding to sensors 0 through 4
+Returns: decimal value representing state of tape detection by sensor array
+*/
 int encodeBinaryToDecimal (int sensor_0,int sensor_1,int sensor_2, int sensor_3,int sensor_4){
   int myReturn = sensor_0*(2*2*2*2) + sensor_1*(2*2*2) + sensor_2*(2*2) + sensor_3*(2) + sensor_4;
   return myReturn;
 }
 
+
+/*Function: drive()
+Purpose: Operates motor H-bridge
+Passed variables:
+  myDirection: The direction we wish to steer the car
+  mySpeed: The PWM speed at which we wish to turn the wheels
+Returns: myDirection (used for previous direction functionality)
+*/
 int drive(int myDirection, int mySpeed){
   // Direction: 0-> straight, 1-> right, -1-> left
 
@@ -379,8 +421,11 @@ int drive(int myDirection, int mySpeed){
       digitalWrite(LEDR,LOW);
   }
   
-  delay (75);
+ //sets polling rate of microcontroller, or (amount of thinking)/(distance travelled). 
+ //Too Fast -> Robot shakes back and forth as if it has Parkinson's disease
+ //Too Slow -> Robot doesnt respond to turns in time and runs off track
+  delay (75); 
   return myDirection;
 }
 
-
+//Thanks for reading :)
