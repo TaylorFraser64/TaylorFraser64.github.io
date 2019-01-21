@@ -1,4 +1,4 @@
-# ○ Taylor's Projects ○
+# Taylor's Projects 
 ### Hello Dear Visitor!
 
 Welcome to my collection of projects!\
