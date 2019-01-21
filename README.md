@@ -1,4 +1,4 @@
-# *** Taylor's Projects ***
+# ○ Taylor's Projects ○
 ### Hello Dear Visitor!
 
 Welcome to my collection of projects!\
@@ -8,7 +8,7 @@ This repository is constantly growing as I work to retrieve old projects, and wo
 \
 Thanks for viewing!\
 If you have any questions, please feel free to contact me at minnietj@hotmail.com\
-Have a wonderful day!\
+Have a wonderful day!
 
 
 ## Index:
