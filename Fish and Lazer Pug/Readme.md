@@ -1,6 +1,6 @@
 # Javascript games
 ### Follow these links to play!
-[Lazer Pug](https://minnietj.github.io/Fish%20and%20Lazer%20Pug/LazerPug-OriginalEdition.html))
+[Lazer Pug](https://minnietj.github.io/Fish%20and%20Lazer%20Pug/LazerPug-OriginalEdition.html)\
 [Fish Eat Fish](https://minnietj.github.io/Fish%20and%20Lazer%20Pug/FishEatFish-OriginalEdition.html)
 
 ### The story
