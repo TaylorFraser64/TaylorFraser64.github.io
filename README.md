@@ -18,7 +18,7 @@ With limited development and debugging time, it was found that the proportional 
 #### 2. Fish and Lazer pug Games
 These are two related games created during high school. Coded in Javascript, they are simple arcade style games aimed to be intuitive and fun.\
 I'm hoping to refurbish and revamp these games as a self-development project in the near future, as well as hopefully make them available for play.
-### 3. Seven Segment Display Scroller
+#### 3. Seven Segment Display Scroller
 A small program to interface with a custom DAC to control the scrolling of letters across a seven segment display.
 #### More to come!
 
