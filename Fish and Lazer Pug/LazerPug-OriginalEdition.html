@@ -1,0 +1,1409 @@
+<html>
+<head>
+<title>Taylor</title>
+
+
+<script> 
+//Global variables here
+
+var myBgPosY = 0;     // present vertical position
+var myBgPosX = 0;    // present horizonal position
+var myBgHeight = 402;    // height of background image
+var myBgWidth = 753;  // width of background image
+var myBgSpeedYdown = 1;    // speed moving down 
+var myBgSpeedXright = 0;    // speed moving right
+var myPlayerSpeed = 20
+var myFacing = 'right'
+var myGunCounter = 0
+var myGunCalculate = 0
+var myUseless = 0
+var myScore = 0
+var myEnemyNumber = 0
+var myEnemyMaxD1 = 5
+var myTrike0Visible = 0
+var myTrike1Visible = 0
+var myTrike2Visible = 0
+var myTrike3Visible = 0
+myTrexSpeedX = 50
+myTrexSpeedY = 50
+var myDead = 0
+myPause = 1
+
+<!-- ********************  Background Scrolling **************************  -->
+
+// myScroll function controls the moving of the background image
+/*
+function myScroll() {
+
+   myAuto()
+   checkAll()
+
+
+   myBgPosY +=  myBgSpeedYdown; 
+   if (myBgPosY > myBgHeight) {myBgPosY = 0}
+   if (myBgPosY <0) {myBgPosY = myBgHeight}
+
+   myBgPosX +=  myBgSpeedXright; 
+   if (myBgPosX > myBgWidth) {myBgPosX = 0}
+   if (myBgPosX <0) {myBgPosX = myBgWidth}
+
+
+   myBgObject.style.backgroundPosition = myBgPosX+" " + myBgPosY;
+}
+*/
+
+
+
+function myScrollUp(){
+    myBgPosY +=  myPlayerSpeed;
+    myBgObject.style.backgroundPosition = myBgPosX+" " + myBgPosY;
+    document.all.myTrike0.style.top   = parseInt(document.all.myTrike0.style.top) +  myPlayerSpeed  +'px'
+    document.all.myTrike1.style.top   = parseInt(document.all.myTrike1.style.top) +  myPlayerSpeed  +'px'
+    document.all.myTrike2.style.top   = parseInt(document.all.myTrike2.style.top) +  myPlayerSpeed  +'px'
+    document.all.myTrike3.style.top   = parseInt(document.all.myTrike3.style.top) +  myPlayerSpeed  +'px'
+    document.all.bullet1.style.top   = parseInt(document.all.bullet1.style.top) +  myPlayerSpeed  +'px'
+    document.all.bullet2.style.top   = parseInt(document.all.bullet2.style.top) +  myPlayerSpeed  +'px'
+    document.all.bullet3.style.top   = parseInt(document.all.bullet3.style.top) +  myPlayerSpeed  +'px'
+    document.all.bullet4.style.top   = parseInt(document.all.bullet4.style.top) +  myPlayerSpeed  +'px'
+    document.all.bullet5.style.top   = parseInt(document.all.bullet5.style.top) +  myPlayerSpeed  +'px'
+    document.all.myTrex.style.top   = parseInt(document.all.myTrex.style.top) +  myPlayerSpeed  +'px'
+}
+
+function myScrollDown(){
+    myBgPosY -=  myPlayerSpeed;
+    myBgObject.style.backgroundPosition = myBgPosX+" " + myBgPosY;
+    document.all.myTrike0.style.top   = parseInt(document.all.myTrike0.style.top) -  myPlayerSpeed  +'px'
+    document.all.myTrike1.style.top   = parseInt(document.all.myTrike1.style.top) -  myPlayerSpeed  +'px'
+    document.all.myTrike2.style.top   = parseInt(document.all.myTrike2.style.top) -  myPlayerSpeed  +'px'
+    document.all.myTrike3.style.top   = parseInt(document.all.myTrike3.style.top) -  myPlayerSpeed  +'px'
+    document.all.bullet1.style.top   = parseInt(document.all.bullet1.style.top) -  myPlayerSpeed  +'px'
+    document.all.bullet2.style.top   = parseInt(document.all.bullet2.style.top) -  myPlayerSpeed  +'px'
+    document.all.bullet3.style.top   = parseInt(document.all.bullet3.style.top) -  myPlayerSpeed  +'px'
+    document.all.bullet4.style.top   = parseInt(document.all.bullet4.style.top) -  myPlayerSpeed  +'px'
+    document.all.bullet5.style.top   = parseInt(document.all.bullet5.style.top) -  myPlayerSpeed  +'px'
+    document.all.myTrex.style.top   = parseInt(document.all.myTrex.style.top) -  myPlayerSpeed  +'px'
+}
+
+function myScrollLeft(){
+    myBgPosX +=  myPlayerSpeed;
+    myBgObject.style.backgroundPosition = myBgPosX+" " + myBgPosY;
+    document.all.myTrike0.style.left   = parseInt(document.all.myTrike0.style.left) +  myPlayerSpeed  +'px'
+    document.all.myTrike1.style.left   = parseInt(document.all.myTrike1.style.left) +  myPlayerSpeed  +'px'
+    document.all.myTrike2.style.left   = parseInt(document.all.myTrike2.style.left) +  myPlayerSpeed  +'px'
+    document.all.myTrike3.style.left   = parseInt(document.all.myTrike3.style.left) +  myPlayerSpeed  +'px'
+    document.all.bullet1.style.left   = parseInt(document.all.bullet1.style.left) +  myPlayerSpeed  +'px'
+    document.all.bullet2.style.left   = parseInt(document.all.bullet2.style.left) +  myPlayerSpeed  +'px'
+    document.all.bullet3.style.left   = parseInt(document.all.bullet3.style.left) +  myPlayerSpeed  +'px'
+    document.all.bullet4.style.left   = parseInt(document.all.bullet4.style.left) +  myPlayerSpeed  +'px'
+    document.all.bullet5.style.left   = parseInt(document.all.bullet5.style.left) +  myPlayerSpeed  +'px'
+    document.all.myTrex.style.left   = parseInt(document.all.myTrex.style.left) +  myPlayerSpeed  +'px'
+}
+
+function myScrollRight(){
+    myBgPosX -=  myPlayerSpeed;
+    myBgObject.style.backgroundPosition = myBgPosX+" " + myBgPosY;
+    document.all.myTrike0.style.left   = parseInt(document.all.myTrike0.style.left) -  myPlayerSpeed  +'px'
+    document.all.myTrike1.style.left   = parseInt(document.all.myTrike1.style.left) -  myPlayerSpeed  +'px'
+    document.all.myTrike2.style.left   = parseInt(document.all.myTrike2.style.left) -  myPlayerSpeed  +'px'
+    document.all.myTrike3.style.left   = parseInt(document.all.myTrike3.style.left) -  myPlayerSpeed  +'px'
+    document.all.bullet1.style.left   = parseInt(document.all.bullet1.style.left) -  myPlayerSpeed  +'px'
+    document.all.bullet2.style.left   = parseInt(document.all.bullet2.style.left) -  myPlayerSpeed  +'px'
+    document.all.bullet3.style.left   = parseInt(document.all.bullet3.style.left) -  myPlayerSpeed  +'px'
+    document.all.bullet4.style.left   = parseInt(document.all.bullet4.style.left) -  myPlayerSpeed  +'px'
+    document.all.bullet5.style.left   = parseInt(document.all.bullet5.style.left) -  myPlayerSpeed  +'px'
+    document.all.myTrex.style.left   = parseInt(document.all.myTrex.style.left) -  myPlayerSpeed  +'px'
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ********************  Object Detection Starts below **************************  -->
+
+// myHitXY function determines if any object has hit an x, y location. Note it is better to use the myHitOther function
+ 
+function myHitXY(my1,X,Y){
+
+   left1  = parseInt(document.getElementById(my1).style.left)
+   right1   = left1 + parseInt(document.getElementById(my1).style.width)
+
+   top1    = parseInt(document.getElementById(my1).style.top)   
+   bottom1 = top1   + parseInt(document.getElementById(my1).style.height)
+
+
+   if ((left1   <= X ) &&      	   
+       (right1  >= X ) &&
+       (top1    <= Y ) &&
+       (bottom1 >= Y ) ){
+       return true
+   }
+}
+
+// myHitOther function determines if two obejcts have hit each other. 
+
+function myHitOther(my1,my2){
+
+   left1   = parseInt(document.getElementById(my1).style.left)
+   right1  = left1 + parseInt(document.getElementById(my1).style.width)
+   top1    = parseInt(document.getElementById(my1).style.top)   
+   bottom1 = top1   + parseInt(document.getElementById(my1).style.height)
+
+
+
+
+
+   left2   = parseInt(document.getElementById(my2).style.left)
+   right2  = left2 + parseInt(document.getElementById(my2).style.width)
+   top2    = parseInt(document.getElementById(my2).style.top)   
+   bottom2 = top2   + parseInt(document.getElementById(my2).style.height)
+
+   if ((right1  >=  left2  ) &&      	   
+       (bottom1 >=  top2   ) &&
+       (left1   <=  right2 ) &&
+       (top1    <=  bottom2) ){
+       return true
+   }
+}
+
+
+
+// Group all your detection code here
+ 
+function checkAll(){
+    
+    
+
+if (myDead == 0){
+    
+    if (myHitOther('myPlayer','myTrike0')) {
+      alert("YOU DIED :(")
+      location.reload();
+      myDead = 1
+    }
+    if (myHitOther('myPlayer','myTrike1')) {
+      alert("YOU DIED :(")
+      location.reload();
+      myDead = 1
+    }
+    if (myHitOther('myPlayer','myTrike2')) {
+      alert("YOU DIED :(")
+      location.reload();
+      myDead = 1
+    }
+    if (myHitOther('myPlayer','myTrike3')) {
+      alert("YOU DIED :(")
+      location.reload();
+      myDead = 1
+    }
+    if (myHitOther('myPlayer','myTrex')) {
+      alert("YOU DIED :(")
+      location.reload();
+      myDead = 1
+    }
+    
+}
+    
+    
+    
+    
+    
+    if (myHitOther('bullet1','myTrike0')) {
+      document.all.myTrike0.style.visibility = 'hidden'
+      myTrike0Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    if (myHitOther('bullet1','myTrike1')) {
+      document.all.myTrike1.style.visibility = 'hidden'
+      myTrike1Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    if (myHitOther('bullet1','myTrike2')) {
+      document.all.myTrike2.style.visibility = 'hidden'
+      myTrike2Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    if (myHitOther('bullet1','myTrike3')) {
+      document.all.myTrike3.style.visibility = 'hidden'
+      myTrike3Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    
+    
+    
+    if (myHitOther('bullet2','myTrike0')) {
+      document.all.myTrike0.style.visibility = 'hidden'
+      myTrike0Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    if (myHitOther('bullet2','myTrike1')) {
+      document.all.myTrike1.style.visibility = 'hidden'
+      myTrike1Visible = 0
+      myEnemyNumber--
+    }
+    
+    if (myHitOther('bullet2','myTrike2')) {
+      document.all.myTrike2.style.visibility = 'hidden'
+      myTrike2Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    if (myHitOther('bullet2','myTrike3')) {
+      document.all.myTrike3.style.visibility = 'hidden'
+      myTrike3Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    
+    
+    if (myHitOther('bullet3','myTrike0')) {
+      document.all.myTrike0.style.visibility = 'hidden'
+      myTrike0Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    if (myHitOther('bullet3','myTrike1')) {
+      document.all.myTrike1.style.visibility = 'hidden'
+      myTrike1Visible = 0
+      myEnemyNumber--
+    }
+    
+    if (myHitOther('bullet3','myTrike2')) {
+      document.all.myTrike2.style.visibility = 'hidden'
+      myTrike2Visible = 0
+      myEnemyNumber--
+    }
+    
+    if (myHitOther('bullet3','myTrike3')) {
+      document.all.myTrike3.style.visibility = 'hidden'
+      myTrike3Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    
+    
+    if (myHitOther('bullet4','myTrike0')) {
+      document.all.myTrike0.style.visibility = 'hidden'
+      myTrike0Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    if (myHitOther('bullet4','myTrike1')) {
+      document.all.myTrike1.style.visibility = 'hidden'
+      myTrike1Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    if (myHitOther('bullet4','myTrike2')) {
+      document.all.myTrike2.style.visibility = 'hidden'
+      myTrike2Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    if (myHitOther('bullet4','myTrike3')) {
+      document.all.myTrike3.style.visibility = 'hidden'
+      myTrike3Visible = 0
+      myEnemyNumber--
+    }
+    
+    
+    if (myHitOther('bullet5','myTrike0')) {
+      document.all.myTrike0.style.visibility = 'hidden'
+      myTrike0Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    if (myHitOther('bullet5','myTrike1')) {
+      document.all.myTrike1.style.visibility = 'hidden'
+      myTrike1Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    if (myHitOther('bullet5','myTrike2')) {
+      document.all.myTrike2.style.visibility = 'hidden'
+      myTrike2Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    if (myHitOther('bullet5','myTrike3')) {
+      document.all.myTrike3.style.visibility = 'hidden'
+      myTrike3Visible = 0
+      myEnemyNumber--
+      myScore = myScore + 10
+    }
+    
+    
+    
+    if (((parseInt(document.all.myTrike0.style.top)) - (parseInt(document.all.myPlayer.style.top))) >= 1000){
+        document.all.myTrike0.style.visibility = 'hidden'
+        myEnemyNumber--
+    }
+    
+    if (((parseInt(document.all.myTrike0.style.top)) - (parseInt(document.all.myPlayer.style.top))) <= -1000){
+        document.all.myTrike0.style.visibility = 'hidden'
+        myEnemyNumber--
+    }
+    
+    
+    
+/* 
+  if (myHitXY('move1',200,280)) {
+    document.getElementById('myShowDiv3').innerHTML = 'You hit the red dot'
+  } else {document.getElementById('myShowDiv3').innerHTML = ''}
+ 
+  if (myHitOther('move1','move2')) {
+      document.getElementById('myShowDiv3').innerHTML = 'You hit object move2'
+  }
+
+
+  if (myHitOther('bullet1','move2')) {
+      document.getElementById('myShowDiv3').innerHTML = 'The bullet hit move 2'
+      document.getElementById('bullet1').style.visibility  = 'hidden'
+      document.getElementById('bullet1').style.left  = '-200px'
+      clearInterval(document.myShot)
+
+  }
+*/
+}
+ 
+// ********************  Object Detection  finished **************************  -->
+
+
+
+
+
+// ********************  Object Motion Below **************************  -->
+
+
+
+
+document.mySpeedX = 0;
+document.mySpeedY = 0;
+/*
+function myAuto(){
+
+  if(parseInt(document.getElementById('move1').style.left) > window.innerWidth - document.getElementById('move1').width){
+       document.mySpeedX *= -1
+   }
+
+  document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)+document.mySpeedX+'px'
+  document.getElementById('move1').style.top  = parseInt(document.getElementById('move1').style.top)+document.mySpeedY+'px'
+
+
+
+// auto moving "move2" should occur here similar to the above.
+//folowing code showes where move 2 and move3, move4 etc are located
+
+document.getElementById('myShowDiv1').innerHTML = 'move1 x='+parseInt(document.getElementById('move1').style.left) +
+', y='+parseInt(document.getElementById('move1').style.top)
+
+document.getElementById('myShowDiv2').innerHTML = 'move2 x='+parseInt(document.getElementById('move2').style.left) +
+', y='+parseInt(document.getElementById('move2').style.top) +
+'<br> move2 x='+parseInt(document.getElementById('move2').style.left) +', y='+parseInt(document.getElementById('move2').style.top) +
+'<br> move2 x='+parseInt(document.getElementById('move2').style.left) +', y='+parseInt(document.getElementById('move2').style.top)
+
+}
+*/
+
+
+
+
+
+
+
+        //      GUN     //
+
+
+
+function myGunPrePrep(){
+    
+    
+    myGunCounter ++
+    
+    
+    if(myGunCounter == 0){
+        myGunPrep1()
+    }
+    if(myGunCounter == 1){
+        myGunPrep2()
+    }
+    if(myGunCounter == 2){
+        myGunPrep3()
+    }
+    if(myGunCounter == 3){
+        myGunPrep4()
+    }
+    if(myGunCounter == 4){
+        myGunPrep5()
+    }    
+    
+    
+    for (myGunCalculate = myGunCounter; myGunCalculate >= 5; myUseless ++){
+        
+        myGunCalculate = myGunCalculate - 5
+        
+        if(myGunCalculate == 0){
+            myGunPrep1()
+        }
+        if(myGunCalculate == 1){
+            myGunPrep2()
+        }
+        if(myGunCalculate == 2){
+            myGunPrep3()
+        }
+        if(myGunCalculate == 3){
+            myGunPrep4()
+        }
+        if(myGunCalculate == 4){
+            myGunPrep5()
+        }
+        
+    }
+    
+    
+    
+    
+    /*
+    for (myGunCounterCalculate = myGunCounter; myGunCounterCalculate < 5 ; myGunCounterCalculate = myGunCounterCalculate - 5 ){
+        if(myGunCounterCalculate == 0){
+            myGunPrep1()
+        }
+        if(myGunCounterCalculate == 1){
+            
+        }
+        if(myGunCounterCalculate == 2){
+            
+        }
+        if(myGunCounterCalculate == 3){
+            
+        }
+        if(myGunCounterCalculate == 4){
+            
+        }
+    }
+    */
+}
+
+
+
+
+
+
+/* start BULLET1 */
+function myGunPrep1(){
+
+    
+    document.getElementById('bullet1').style.left  = document.getElementById('myPlayer').style.left
+    document.getElementById('bullet1').style.top   = document.getElementById('myPlayer').style.top
+    
+   clearInterval(document.myShot1)
+   
+   
+    if (myFacing == 'left'){
+        document.myShot1 = setInterval('myGunGoLeft1()', 30) // calls the function every 30 mille seconds
+    }
+   
+    if (myFacing == 'right'){
+        document.myShot1 = setInterval('myGunGoRight1()', 30)
+    }
+    
+    if (myFacing == 'up'){
+        document.myShot1 = setInterval('myGunGoUp1()', 30)
+    }
+    
+    if (myFacing == 'down'){
+        document.myShot1 = setInterval('myGunGoDown1()', 30)
+    }
+
+}
+
+
+function myGunGoLeft1(){
+    
+    document.getElementById("bullet1").src = "Laser_Horizontal.png"
+    document.getElementById("bullet1").style.height = '5px'
+    document.getElementById("bullet1").style.width = '50px'
+    document.getElementById('bullet1').style.left  = parseInt(document.getElementById('bullet1').style.left) - 20 + 'px'
+    myBullet1Visible1()
+}
+
+function myGunGoRight1(){
+    
+    document.getElementById("bullet1").src = "Laser_Horizontal.png"
+    document.getElementById("bullet1").style.height = '5px'
+    document.getElementById("bullet1").style.width = '50px'
+    document.getElementById('bullet1').style.left  = parseInt(document.getElementById('bullet1').style.left) + 20 + 'px'
+    myBullet1Visible1()
+}
+
+function myGunGoUp1(){
+    
+    document.getElementById("bullet1").src = "Laser_Vertical.png"
+    document.getElementById("bullet1").style.height = '50px'
+    document.getElementById("bullet1").style.width = '5px'
+    document.getElementById('bullet1').style.top  = parseInt(document.getElementById('bullet1').style.top) - 20 + 'px'
+    myBullet1Visible1()
+}
+
+function myGunGoDown1(){
+    
+    document.getElementById("bullet1").src = "Laser_Vertical.png"
+    document.getElementById("bullet1").style.height = '50px'
+    document.getElementById("bullet1").style.width = '5px'
+    document.getElementById('bullet1').style.top  = parseInt(document.getElementById('bullet1').style.top) + 20 + 'px'
+    myBullet1Visible1()
+}
+
+function myBullet1Visible1(){
+    document.getElementById('bullet1').style.visibility  = 'visible'
+}
+
+/* end BULLET1 */
+
+
+
+/* start BULLET2 */
+function myGunPrep2(){
+
+    
+    document.getElementById('bullet2').style.left  = document.getElementById('myPlayer').style.left
+    document.getElementById('bullet2').style.top   = document.getElementById('myPlayer').style.top
+    
+   clearInterval(document.myShot2)
+   
+   
+    if (myFacing == 'left'){
+        document.myShot2 = setInterval('myGunGoLeft2()', 30) // calls the function every 30 mille seconds
+    }
+   
+    if (myFacing == 'right'){
+        document.myShot2 = setInterval('myGunGoRight2()', 30)
+    }
+    
+    if (myFacing == 'up'){
+        document.myShot2 = setInterval('myGunGoUp2()', 30)
+    }
+    
+    if (myFacing == 'down'){
+        document.myShot2 = setInterval('myGunGoDown2()', 30)
+    }
+
+}
+
+
+function myGunGoLeft2(){
+    
+    document.getElementById("bullet2").src = "Laser_Horizontal.png"
+    document.getElementById("bullet2").style.height = '5px'
+    document.getElementById("bullet2").style.width = '50px'
+    document.getElementById('bullet2').style.left  = parseInt(document.getElementById('bullet2').style.left) - 20 + 'px'
+    mybullet2Visible2()
+}
+
+function myGunGoRight2(){
+    
+    document.getElementById("bullet2").src = "Laser_Horizontal.png"
+    document.getElementById("bullet2").style.height = '5px'
+    document.getElementById("bullet2").style.width = '50px'
+    document.getElementById('bullet2').style.left  = parseInt(document.getElementById('bullet2').style.left) + 20 + 'px'
+    mybullet2Visible2()
+}
+
+function myGunGoUp2(){
+    
+    document.getElementById("bullet2").src = "Laser_Vertical.png"
+    document.getElementById("bullet2").style.height = '50px'
+    document.getElementById("bullet2").style.width = '5px'
+    document.getElementById('bullet2').style.top  = parseInt(document.getElementById('bullet2').style.top) - 20 + 'px'
+    mybullet2Visible2()
+}
+
+function myGunGoDown2(){
+    
+    document.getElementById("bullet2").src = "Laser_Vertical.png"
+    document.getElementById("bullet2").style.height = '50px'
+    document.getElementById("bullet2").style.width = '5px'
+    document.getElementById('bullet2').style.top  = parseInt(document.getElementById('bullet2').style.top) + 20 + 'px'
+    mybullet2Visible2()
+}
+
+function mybullet2Visible2(){
+    document.getElementById('bullet2').style.visibility  = 'visible'
+}
+
+/* end BULLET2 */
+
+
+/* start BULLET3 */
+function myGunPrep3(){
+
+    
+    document.getElementById('bullet3').style.left  = document.getElementById('myPlayer').style.left
+    document.getElementById('bullet3').style.top   = document.getElementById('myPlayer').style.top
+    
+   clearInterval(document.myShot3)
+   
+   
+    if (myFacing == 'left'){
+        document.myShot3 = setInterval('myGunGoLeft3()', 30) // calls the function every 30 mille seconds
+    }
+   
+    if (myFacing == 'right'){
+        document.myShot3 = setInterval('myGunGoRight3()', 30)
+    }
+    
+    if (myFacing == 'up'){
+        document.myShot3 = setInterval('myGunGoUp3()', 30)
+    }
+    
+    if (myFacing == 'down'){
+        document.myShot3 = setInterval('myGunGoDown3()', 30)
+    }
+
+}
+
+
+function myGunGoLeft3(){
+    
+    document.getElementById("bullet3").src = "Laser_Horizontal.png"
+    document.getElementById("bullet3").style.height = '5px'
+    document.getElementById("bullet3").style.width = '50px'
+    document.getElementById('bullet3').style.left  = parseInt(document.getElementById('bullet3').style.left) - 20 + 'px'
+    myBullet3Visible3()
+}
+
+function myGunGoRight3(){
+    
+    document.getElementById("bullet3").src = "Laser_Horizontal.png"
+    document.getElementById("bullet3").style.height = '5px'
+    document.getElementById("bullet3").style.width = '50px'
+    document.getElementById('bullet3').style.left  = parseInt(document.getElementById('bullet3').style.left) + 20 + 'px'
+    myBullet3Visible3()
+}
+
+function myGunGoUp3(){
+    
+    document.getElementById("bullet3").src = "Laser_Vertical.png"
+    document.getElementById("bullet3").style.height = '50px'
+    document.getElementById("bullet3").style.width = '5px'
+    document.getElementById('bullet3').style.top  = parseInt(document.getElementById('bullet3').style.top) - 20 + 'px'
+    myBullet3Visible3()
+}
+
+function myGunGoDown3(){
+    
+    document.getElementById("bullet3").src = "Laser_Vertical.png"
+    document.getElementById("bullet3").style.height = '50px'
+    document.getElementById("bullet3").style.width = '5px'
+    document.getElementById('bullet3').style.top  = parseInt(document.getElementById('bullet3').style.top) + 20 + 'px'
+    myBullet3Visible3()
+}
+
+function myBullet3Visible3(){
+    document.getElementById('bullet3').style.visibility  = 'visible'
+}
+
+/* end BULLET3 */
+
+
+/* start BULLET4 */
+function myGunPrep4(){
+
+    
+    document.getElementById('bullet4').style.left  = document.getElementById('myPlayer').style.left
+    document.getElementById('bullet4').style.top   = document.getElementById('myPlayer').style.top
+    
+   clearInterval(document.myShot4)
+   
+   
+    if (myFacing == 'left'){
+        document.myShot4 = setInterval('myGunGoLeft4()', 30) // calls the function every 30 mille seconds
+    }
+   
+    if (myFacing == 'right'){
+        document.myShot4 = setInterval('myGunGoRight4()', 30)
+    }
+    
+    if (myFacing == 'up'){
+        document.myShot4 = setInterval('myGunGoUp4()', 30)
+    }
+    
+    if (myFacing == 'down'){
+        document.myShot4 = setInterval('myGunGoDown4()', 30)
+    }
+
+}
+
+
+function myGunGoLeft4(){
+    
+    document.getElementById("bullet4").src = "Laser_Horizontal.png"
+    document.getElementById("bullet4").style.height = '5px'
+    document.getElementById("bullet4").style.width = '50px'
+    document.getElementById('bullet4').style.left  = parseInt(document.getElementById('bullet4').style.left) - 20 + 'px'
+    myBullet4Visible4()
+}
+
+function myGunGoRight4(){
+    
+    document.getElementById("bullet4").src = "Laser_Horizontal.png"
+    document.getElementById("bullet4").style.height = '5px'
+    document.getElementById("bullet4").style.width = '50px'
+    document.getElementById('bullet4').style.left  = parseInt(document.getElementById('bullet4').style.left) + 20 + 'px'
+    myBullet4Visible4()
+}
+
+function myGunGoUp4(){
+    
+    document.getElementById("bullet4").src = "Laser_Vertical.png"
+    document.getElementById("bullet4").style.height = '50px'
+    document.getElementById("bullet4").style.width = '5px'
+    document.getElementById('bullet4').style.top  = parseInt(document.getElementById('bullet4').style.top) - 20 + 'px'
+    myBullet4Visible4()
+}
+
+function myGunGoDown4(){
+    
+    document.getElementById("bullet4").src = "Laser_Vertical.png"
+    document.getElementById("bullet4").style.height = '50px'
+    document.getElementById("bullet4").style.width = '5px'
+    document.getElementById('bullet4').style.top  = parseInt(document.getElementById('bullet4').style.top) + 20 + 'px'
+    myBullet4Visible4()
+}
+
+function myBullet4Visible4(){
+    document.getElementById('bullet4').style.visibility  = 'visible'
+}
+
+/* end BULLET4 */
+
+
+/* start BULLET5 */
+function myGunPrep5(){
+
+    
+    document.getElementById('bullet5').style.left  = document.getElementById('myPlayer').style.left
+    document.getElementById('bullet5').style.top   = document.getElementById('myPlayer').style.top
+    
+   clearInterval(document.myShot5)
+   
+   
+    if (myFacing == 'left'){
+        document.myShot5 = setInterval('myGunGoLeft5()', 30) // calls the function every 30 mille seconds
+    }
+   
+    if (myFacing == 'right'){
+        document.myShot5 = setInterval('myGunGoRight5()', 30)
+    }
+    
+    if (myFacing == 'up'){
+        document.myShot5 = setInterval('myGunGoUp5()', 30)
+    }
+    
+    if (myFacing == 'down'){
+        document.myShot5 = setInterval('myGunGoDown5()', 30)
+    }
+
+}
+
+
+function myGunGoLeft5(){
+    
+    document.getElementById("bullet5").src = "Laser_Horizontal.png"
+    document.getElementById("bullet5").style.height = '5px'
+    document.getElementById("bullet5").style.width = '50px'
+    document.getElementById('bullet5').style.left  = parseInt(document.getElementById('bullet5').style.left) - 20 + 'px'
+    myBullet5Visible5()
+}
+
+function myGunGoRight5(){
+    
+    document.getElementById("bullet5").src = "Laser_Horizontal.png"
+    document.getElementById("bullet5").style.height = '5px'
+    document.getElementById("bullet5").style.width = '50px'
+    document.getElementById('bullet5').style.left  = parseInt(document.getElementById('bullet5').style.left) + 20 + 'px'
+    myBullet5Visible5()
+}
+
+function myGunGoUp5(){
+    
+    document.getElementById("bullet5").src = "Laser_Vertical.png"
+    document.getElementById("bullet5").style.height = '50px'
+    document.getElementById("bullet5").style.width = '5px'
+    document.getElementById('bullet5').style.top  = parseInt(document.getElementById('bullet5').style.top) - 20 + 'px'
+    myBullet5Visible5()
+}
+
+function myGunGoDown5(){
+    
+    document.getElementById("bullet5").src = "Laser_Vertical.png"
+    document.getElementById("bullet5").style.height = '50px'
+    document.getElementById("bullet5").style.width = '5px'
+    document.getElementById('bullet5').style.top  = parseInt(document.getElementById('bullet5').style.top) + 20 + 'px'
+    myBullet5Visible5()
+}
+
+function myBullet5Visible5(){
+    document.getElementById('bullet5').style.visibility  = 'visible'
+}
+
+/* end BULLET5 */
+
+    //       END GUN     //
+
+
+
+
+
+
+
+
+
+
+
+
+function myOnLoad(){
+    myTimer = setInterval('myMasterAuto()', 100)
+    myTimer1 = setInterval('myMasterSpawn()', 100)
+    myTimer2 = setInterval('checkAll()', 100)
+    myTimer3 = setInterval('myPrintScore()', 100)
+}
+
+
+
+
+function myPrintScore(){
+    
+    if ((parseInt(document.all.myTrex.style.left) < parseInt(document.all.myPlayer.style.left) + 1000 ) && 
+        (parseInt(document.all.myTrex.style.left) > parseInt(document.all.myPlayer.style.left) - 1000 ) &&
+        (parseInt(document.all.myTrex.style.top) < parseInt(document.all.myPlayer.style.top) + 1000 ) &&
+        (parseInt(document.all.myTrex.style.top) > parseInt(document.all.myPlayer.style.top) - 1000 ) ){
+        document.getElementById("myInstructions").innerHTML="<font  size=5 face='Lucida Console' color=red>  WARNING! <br><br> Carnotaurus Near! <br><br>" + myScore; + "</font>"
+    }
+        else{
+            document.getElementById("myInstructions").innerHTML="<font  size=5 face=verdana> <br> Hunt <br> The Trikes! <br>" + myScore; + "</font>"
+        }
+}
+
+
+
+
+
+    //      SPAWN       //
+
+function myMasterSpawn(){
+    
+    myDistanceCheck()
+    
+    if (myScore < 100000){
+        mySpawnD1()
+    }
+    
+    if (myScore > 1000000){
+        mySpawnD2()
+    }
+    
+    
+    
+    
+    
+    
+}
+
+function mySpawnD1(){
+    
+    
+    
+    if ((myEnemyNumber < myEnemyMaxD1)&&(myTrike0Visible == 0)){
+        
+        
+        if((Math.round(Math.random()) * 2 - 1) == 1){
+        document.all.myTrike0.style.left = parseInt(document.all.myPlayer.style.left) + ((Math.round(Math.random()) * 2 - 1)*1200) + Math.floor(Math.random()*300-150) + 'px'
+        document.all.myTrike0.style.top = parseInt(document.all.myPlayer.style.top) + Math.floor(Math.random()*300-150) + 'px'
+        }
+            else{
+                document.all.myTrike0.style.top = parseInt(document.all.myPlayer.style.top) + ((Math.round(Math.random()) * 2 - 1)*1200) + Math.floor(Math.random()*300-150) + 'px'
+                document.all.myTrike0.style.left = parseInt(document.all.myPlayer.style.left) + Math.floor(Math.random()*300-150) + 'px'
+            }
+    document.all.myTrike0.style.visibility = 'visible'
+    myTrike0Visible = 1
+    myEnemyNumber++
+        
+    }
+    
+    
+    
+    
+    
+    
+    if ((myEnemyNumber < myEnemyMaxD1)&&(myTrike1Visible == 0)){
+        
+        
+        if((Math.round(Math.random()) * 2 - 1) == 1){
+        document.all.myTrike1.style.left = parseInt(document.all.myPlayer.style.left) + ((Math.round(Math.random()) * 2 - 1)*1200) + Math.floor(Math.random()*300-150) + 'px'
+        document.all.myTrike1.style.top = parseInt(document.all.myPlayer.style.top) + Math.floor(Math.random()*300-150) + 'px'
+        }
+            else{
+                document.all.myTrike1.style.top = parseInt(document.all.myPlayer.style.top) + ((Math.round(Math.random()) * 2 - 1)*1200) + Math.floor(Math.random()*300-150) + 'px'
+                document.all.myTrike1.style.left = parseInt(document.all.myPlayer.style.left) + Math.floor(Math.random()*300-150) + 'px'
+            }
+    document.all.myTrike1.style.visibility = 'visible'
+    myTrike1Visible = 1
+    myEnemyNumber++
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    if ((myEnemyNumber < myEnemyMaxD1)&&(myTrike2Visible == 0)){
+        
+        
+        if((Math.round(Math.random()) * 2 - 1) == 1){
+        document.all.myTrike2.style.left = parseInt(document.all.myPlayer.style.left) + ((Math.round(Math.random()) * 2 - 1)*1200) + Math.floor(Math.random()*300-150) + 'px'
+        document.all.myTrike2.style.top = parseInt(document.all.myPlayer.style.top) + Math.floor(Math.random()*300-150) + 'px'
+        }
+            else{
+                document.all.myTrike2.style.top = parseInt(document.all.myPlayer.style.top) + ((Math.round(Math.random()) * 2 - 1)*1200) + Math.floor(Math.random()*300-150) + 'px'
+                document.all.myTrike2.style.left = parseInt(document.all.myPlayer.style.left) + Math.floor(Math.random()*300-150) + 'px'
+            }
+    document.all.myTrike2.style.visibility = 'visible'
+    myTrike2Visible = 1
+    myEnemyNumber++
+        
+    }
+    
+    
+    
+    
+    if ((myEnemyNumber < myEnemyMaxD1)&&(myTrike3Visible == 0)){
+        
+        
+        if((Math.round(Math.random()) * 2 - 1) == 1){
+        document.all.myTrike3.style.left = parseInt(document.all.myPlayer.style.left) + ((Math.round(Math.random()) * 2 - 1)*1200) + Math.floor(Math.random()*300-150) + 'px'
+        document.all.myTrike3.style.top = parseInt(document.all.myPlayer.style.top) + Math.floor(Math.random()*300-150) + 'px'
+        }
+            else{
+                document.all.myTrike3.style.top = parseInt(document.all.myPlayer.style.top) + ((Math.round(Math.random()) * 2 - 1)*1200) + Math.floor(Math.random()*300-150) + 'px'
+                document.all.myTrike3.style.left = parseInt(document.all.myPlayer.style.left) + Math.floor(Math.random()*300-150) + 'px'
+            }
+    document.all.myTrike3.style.visibility = 'visible'
+    myTrike3Visible = 1
+    myEnemyNumber++
+        
+    }
+    
+    
+    
+    
+    
+}
+
+
+function myDistanceCheck(){
+    if(
+        (parseInt(document.all.myTrike0.style.left) - parseInt(document.all.myPlayer.style.left) > 1500) ||
+        (parseInt(document.all.myTrike0.style.left) - parseInt(document.all.myPlayer.style.left) < -1500) ||
+        (parseInt(document.all.myTrike0.style.top) - parseInt(document.all.myPlayer.style.top) > 1500) ||
+        (parseInt(document.all.myTrike0.style.top) - parseInt(document.all.myPlayer.style.top) < -1500)){
+            document.all.myTrike0.style.visibility = 'hidden'
+            myTrike0Visible = 0
+            myEnemyNumber--
+        
+    }
+    
+    if(
+        (parseInt(document.all.myTrike1.style.left) - parseInt(document.all.myPlayer.style.left) > 1500) ||
+        (parseInt(document.all.myTrike1.style.left) - parseInt(document.all.myPlayer.style.left) < -1500) ||
+        (parseInt(document.all.myTrike1.style.top) - parseInt(document.all.myPlayer.style.top) > 1500) ||
+        (parseInt(document.all.myTrike1.style.top) - parseInt(document.all.myPlayer.style.top) < -1500)){
+            document.all.myTrike1.style.visibility = 'hidden'
+            myTrike1Visible = 0
+            myEnemyNumber--
+        
+    }
+    
+    
+    if(
+        (parseInt(document.all.myTrike2.style.left) - parseInt(document.all.myPlayer.style.left) > 1500) ||
+        (parseInt(document.all.myTrike2.style.left) - parseInt(document.all.myPlayer.style.left) < -1500) ||
+        (parseInt(document.all.myTrike2.style.top) - parseInt(document.all.myPlayer.style.top) > 1500) ||
+        (parseInt(document.all.myTrike2.style.top) - parseInt(document.all.myPlayer.style.top) < -1500)){
+            document.all.myTrike2.style.visibility = 'hidden'
+            myTrike2Visible = 0
+            myEnemyNumber--
+        
+    }
+    
+    if(
+        (parseInt(document.all.myTrike3.style.left) - parseInt(document.all.myPlayer.style.left) > 1500) ||
+        (parseInt(document.all.myTrike3.style.left) - parseInt(document.all.myPlayer.style.left) < -1500) ||
+        (parseInt(document.all.myTrike3.style.top) - parseInt(document.all.myPlayer.style.top) > 1500) ||
+        (parseInt(document.all.myTrike3.style.top) - parseInt(document.all.myPlayer.style.top) < -1500)){
+            document.all.myTrike3.style.visibility = 'hidden'
+            myTrike3Visible = 0
+            myEnemyNumber--
+        
+    }
+}
+    //  END SPAWN   //
+
+
+
+
+
+
+
+
+function myMasterAuto(){
+    
+    myAutoMove()
+    myMoveTrex()
+    
+
+}
+
+function myAutoMove(){
+    document.myCompX0 = Math.floor(Math.random()*50 -25)
+    document.myCompY0 = Math.floor(Math.random()*50 -25)
+    
+    document.myCompX1 = Math.floor(Math.random()*50 -25)
+    document.myCompY1 = Math.floor(Math.random()*50 -25)
+ 
+    document.myCompX2 = Math.floor(Math.random()*50 -25)
+    document.myCompY2 = Math.floor(Math.random()*50 -25)
+
+    document.myCompX3 = Math.floor(Math.random()*50 -25)
+    document.myCompY3 = Math.floor(Math.random()*50 -25)
+
+    document.all.myTrike0.style.left  = parseInt(document.all.myTrike0.style.left) +  document.myCompX0  +'px'
+    document.all.myTrike0.style.top   = parseInt(document.all.myTrike0.style.top) +  document.myCompY0  +'px'
+
+    document.all.myTrike1.style.left  = parseInt(document.all.myTrike1.style.left) +  document.myCompX1  +'px'
+    document.all.myTrike1.style.top   = parseInt(document.all.myTrike1.style.top) +  document.myCompY1  +'px'
+
+    document.all.myTrike2.style.left  = parseInt(document.all.myTrike2.style.left) +  document.myCompX2  +'px'
+    document.all.myTrike2.style.top   = parseInt(document.all.myTrike2.style.top) +  document.myCompY2  +'px'
+
+    document.all.myTrike3.style.left  = parseInt(document.all.myTrike3.style.left) +  document.myCompX3  +'px'
+    document.all.myTrike3.style.top   = parseInt(document.all.myTrike3.style.top) +  document.myCompY3  +'px'
+
+    
+}
+
+function myMoveTrex(){
+
+    if (parseInt(document.all.myTrex.style.left) > parseInt(document.all.myPlayer.style.left) + 2000 ){
+        myTrexSpeedX = -50
+        document.getElementById("myTrex").src = "Carno_Left.gif"
+    }
+    
+    if (parseInt(document.all.myTrex.style.left) < parseInt(document.all.myPlayer.style.left) - 2000 ){
+        myTrexSpeedX = 50
+        document.getElementById("myTrex").src = "Carno_right.gif"
+    }
+    
+    if (parseInt(document.all.myTrex.style.top) > parseInt(document.all.myPlayer.style.top) + 2000 ){
+        myTrexSpeedY = -50
+    }
+    
+    if (parseInt(document.all.myTrex.style.top) < parseInt(document.all.myPlayer.style.top) - 2000 ){
+        myTrexSpeedY = 50
+    }
+    
+    document.all.myTrex.style.left  = parseInt(document.all.myTrex.style.left) +  myTrexSpeedX  +'px'
+    document.all.myTrex.style.top  = parseInt(document.all.myTrex.style.top) +  myTrexSpeedY  +'px'
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function myTest(){
+    myRANDRAND = (Math.round(Math.random()) * 2 - 1)*100
+    alert(myRANDRAND)
+}
+
+
+/* FACING */
+
+function myFaceLeft(){
+    document.getElementById("myPlayer").src = "Pug_Left.gif"
+    myFacing = 'left'
+}
+
+function myFaceRight(){
+    document.getElementById("myPlayer").src = "Pug_Right.gif"
+    myFacing = 'right'
+}
+
+function myFaceUp(){
+    document.getElementById("myPlayer").src = "Pug_Up.gif"
+    myFacing = 'up'
+}
+
+function myFaceDown(){
+    document.getElementById("myPlayer").src = "Pug_Down.gif"
+    myFacing = 'down'
+}
+
+</script>
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ********************  Here the webpage begins **************************  -->
+
+
+<!-- ********************  onkeypress just for webpages is useless on mobile apps **************************  -->
+
+<body background="http://www.oocities.org/southbeach/sands/3142/rain_forrest.gif" 
+    onload="  myOnLoad()  "   
+    onkeypress="{
+    
+    
+    /*
+	    if(event.keyCode==97){    document.getElementById('move1').style.left  = parseInt(document.getElementById('move1').style.left)-5+'px'}   // small 'a' key go left
+	    if(event.keyCode==119){   document.getElementById('move1').style.top  = parseInt(document.getElementById('move1').style.top)-5+'px'}   // small 'w' key go up
+    */
+
+    if (String.fromCharCode(event.keyCode).toUpperCase() == 'A'){  
+        myFaceLeft()
+        if (parseInt(document.all.myPlayer.style.left) < 300){
+            myScrollLeft()
+        }
+            else{
+                document.all.myPlayer.style.left = parseInt(document.all.myPlayer.style.left) - myPlayerSpeed  +'px'
+            }
+      }
+   
+   
+    if (String.fromCharCode(event.keyCode).toUpperCase() == 'D'){
+        myFaceRight()
+        if (parseInt(document.all.myPlayer.style.left) > screen.width-300){
+            myScrollRight()
+        }
+            else{
+                document.all.myPlayer.style.left = parseInt(document.all.myPlayer.style.left) + myPlayerSpeed + 'px'
+            }
+    }
+
+
+
+    if (String.fromCharCode(event.keyCode).toUpperCase() == 'S'){
+        myFaceDown()
+        if (parseInt(document.all.myPlayer.style.top) > screen.height-300){
+            myScrollDown()
+        }
+            else{
+                document.all.myPlayer.style.top = parseInt(document.all.myPlayer.style.top) + myPlayerSpeed + 'px'
+            }
+    }
+
+
+
+    if (String.fromCharCode(event.keyCode).toUpperCase() == 'W'){
+        myFaceUp()
+        if (parseInt(document.all.myPlayer.style.top) < 200){
+            myScrollUp()
+        }
+            else{
+                document.all.myPlayer.style.top = parseInt(document.all.myPlayer.style.top) - myPlayerSpeed + 'px'
+            }
+    }
+    
+    
+    
+    if (String.fromCharCode(event.keyCode).toUpperCase() == 'Q'){
+        myGunPrePrep()
+    }
+
+
+
+
+
+
+
+}">
+
+
+<script>        // This object must be after the body tag
+
+myBgObject = eval('document.body');
+
+</script>
+
+
+
+
+
+
+
+
+<!-- ********************  Some instructions that magically disappear **************************  -->
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+<!-- ********************  Following should be all your images **************************  -->
+
+
+<img id="myCompass" src="Asset.png" style="position:absolute; left:10px; width:250px; height:350px; top:10px;">
+<img id="myTitleBar" src="Title.png" align=center style="position:absolute;  width:700px; height:50px;  top:5px; left:300px;">
+
+<img  id="myPlayer"  src="Pug_Right.gif" style="position:absolute; width:30px; height:30px;  left:500px; top:240px;"/>
+
+<img  id="myTrike0"  src="http://orig06.deviantart.net/47a4/f/2013/313/f/0/dino_run_2__triceratops_by_dinorun2-d6tmvjp.gif" style="position:absolute; width:150px; height:90px;  left:0px; top:0px; visibility:visible;"/>
+<img  id="myTrike1"  src="http://orig06.deviantart.net/47a4/f/2013/313/f/0/dino_run_2__triceratops_by_dinorun2-d6tmvjp.gif" style="position:absolute; width:150px; height:90px;  left:0px; top:0px; visibility:visible;"/>
+<img  id="myTrike2"  src="http://orig06.deviantart.net/47a4/f/2013/313/f/0/dino_run_2__triceratops_by_dinorun2-d6tmvjp.gif" style="position:absolute; width:150px; height:90px;  left:0px; top:0px; visibility:visible;"/>
+<img  id="myTrike3"  src="http://orig06.deviantart.net/47a4/f/2013/313/f/0/dino_run_2__triceratops_by_dinorun2-d6tmvjp.gif" style="position:absolute; width:150px; height:90px;  left:0px; top:0px; visibility:visible;"/>
+<img  id="myTrex"  src="http://im.ezgif.com/tmp/ezgif-394886380.gif" style="position:absolute;  height:200px; width:450px; left:1200px; top:1200px; visibility:visible;"/>
+
+
+
+<img  id="bullet1" src="Laser_Horizontal.png" style="position:absolute; width:50px; height:5px;  left:-1000px; top:-1000px; visibility:hidden"/>
+<img  id="bullet2" src="Laser_Horizontal.png" style="position:absolute; width:50px; height:5px;  left:-1000px; top:-1000px; visibility:hidden"/>
+<img  id="bullet3" src="Laser_Horizontal.png" style="position:absolute; width:50px; height:5px;  left:-1000px; top:-1000px; visibility:hidden"/>
+<img  id="bullet4" src="Laser_Horizontal.png" style="position:absolute; width:50px; height:5px;  left:-1000px; top:-1000px; visibility:hidden"/>
+<img  id="bullet5" src="Laser_Horizontal.png" style="position:absolute; width:50px; height:5px;  left:-1000px; top:-1000px; visibility:hidden"/>
+
+<div id="myInstructions" align=center style="position:absolute; left:50px; width:170px; height:140px; top:150px;" onclick="{
+    //document.getElementById('myInstructions').style.visibility = 'hidden'}
+    
+">
+
+
+</font>
+</div><br>
+
+<h2 align=center   style="position:absolute;  top:0px; left:450px;"> <font face=verdana size=4> ~ LASER PUG - MASTER DINO HUNTER ~ </font></h2>
+<input type=button id=myButtonPause onClick="{
+    myPause = 1
+}">
+
+<input type=button id=myButtonResume onClick="{
+    myPause = 0
+}">
+<!-- ******************** This is the silly little dot that dosent exist anymore that the main object hits **************************  -->
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ********************  Now all the buttons. 
+Note: ontouchstart is faster than onclick but only works on touch screens or mobile  **************************  -->
+
+
+
+</body>
+<!--
+1 6 11 16 21
+2 7 12 17 22
+3 8 13 18 23
+4 9 14 19 24
+5 10 15 20 25
+
+
+
+
+
+player 100 trike 50 player-trike= 50; trike-player=-50
+trike 100 player 50 player-trike= -50; trike-player=50
+
+
+-->
+
+
+
+</html>
+
