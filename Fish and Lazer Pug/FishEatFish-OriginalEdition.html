@@ -1,0 +1,1655 @@
+//This piece of code was created in grade 11 and is a horrible mess. 
+//The links are broken, and apparently I did not know you could pass variables to functions.
+//Please do not judge my skills from this code!
+
+
+
+<html>
+   
+<!-- HEAD WITH SCRIPTS -->
+<head>
+
+
+
+
+
+<script>
+
+
+
+//DECLARE VARIABLES
+
+myPause = 'false'
+document.myInterval = 0
+document.myInterval1 = 0
+document.myInterval2 = 0
+document.myInterval3 = 0
+document.myInterval4 = 0
+document.myInterval5 = 0
+document.myInterval6 = 0
+document.myInterval7 = 0
+document.myInterval8 = 0
+document.myInterval9 = 0
+document.myInterval10 = 0
+document.myInterval11 = 0
+document.myInterval12 = 0
+document.myInterval13 = 0
+document.myInterval14 = 0
+document.myInterval15 = 0
+document.myInterval16 = 0
+document.myInterval17 = 0
+document.myInterval18 = 0
+document.myInterval19 = 0
+document.myInterval20 = 0
+document.myInterval21 = 0
+document.myInterval22 = 0
+document.myInterval23 = 0
+document.myInterval24 = 0
+document.myInterval25 = 0
+document.myInterval26 = 0
+document.myInterval27 = 0
+
+document.myHorizontalSpeed = +1.25
+document.myVerticalSpeed = +1.25
+document.myHorizontalSpeed1 = +1.25
+document.myVerticalSpeed1 = +1.25
+
+
+document.myCompX2 = +5
+document.myCompY2 = +5
+document.myRandom = Math.floor(Math.random()*50 + 50)
+
+/*
+//GENEATE FISH
+function myGenerate(){
+   myWidth = document.myRandom
+   myHeight = document.myRandom
+   
+   if (myPause= 'true'){
+   document.getElementById("myFish");
+   }
+   
+   
+   
+   
+   
+}
+
+*/
+
+//LINEAR MOVEMENT
+
+function myLinear(){
+   
+     document.all.myEnemy.style.left  = parseInt(document.all.myEnemy.style.left) +  document.myHorizontalSpeed  +'px'
+     document.all.myEnemy.style.top  = parseInt(document.all.myEnemy.style.top) +  document.myVerticalSpeed  +'px'
+ 
+   // CHECK WALLS
+   
+   if (parseInt(document.all.myEnemy.style.left) <= 0) {
+      document.myHorizontalSpeed = document.myHorizontalSpeed *-1
+   }
+
+   if (parseInt(document.all.myEnemy.style.left) >= 1100) {
+      document.myHorizontalSpeed = document.myHorizontalSpeed *-1
+   }
+   
+   if (parseInt(document.all.myEnemy.style.top) <= 0) {
+      document.myVerticalSpeed = document.myVerticalSpeed *-1
+   }
+   if (parseInt(document.all.myEnemy.style.top) >= 800) {
+      document.myVerticalSpeed = document.myVerticalSpeed *-1
+   }
+
+
+}
+
+function myLinear1(){
+   
+     document.all.myEnemy1.style.left  = parseInt(document.all.myEnemy1.style.left) +  document.myHorizontalSpeed1  +'px'
+     document.all.myEnemy1.style.top  = parseInt(document.all.myEnemy1.style.top) +  document.myVerticalSpeed1  +'px'
+ 
+   // CHECK WALLS
+   
+   if (parseInt(document.all.myEnemy1.style.left) <= 0) {
+      document.myHorizontalSpeed1 = document.myHorizontalSpeed1 *-1
+   }
+
+   if (parseInt(document.all.myEnemy1.style.left) >= 1100) {
+      document.myHorizontalSpeed1 = document.myHorizontalSpeed1 *-1
+   }
+   
+   if (parseInt(document.all.myEnemy1.style.top) <= 0) {
+      document.myVerticalSpeed1 = document.myVerticalSpeed1 *-1
+   }
+   if (parseInt(document.all.myEnemy1.style.top) >= 800) {
+      document.myVerticalSpeed1 = document.myVerticalSpeed1 *-1
+   }
+
+
+}
+
+//RANDOM MOVEMENT
+
+function myComputer(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish.style.left  = parseInt(document.all.myFish.style.left) +  document.myCompX2  +'px'
+   document.all.myFish.style.top   = parseInt(document.all.myFish.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFishRight = parseInt(document.all.myFish.style.left) + parseInt(document.all.myFish.width) + 'px'
+   myFishBottom = document.all.myFish.style.top + document.all.myFish.height
+
+
+   if (parseInt(document.all.myFish.style.left) <= 0) {
+      document.all.myFish.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish.style.top) <= 0) {
+      document.all.myFish.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish.style.left) >= 1200) {
+      document.all.myFish.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish.style.top) >= 850) {
+      document.all.myFish.style.top = '850px'
+   }
+   
+   
+}
+
+
+
+
+function myComputer1(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish1.style.left  = parseInt(document.all.myFish1.style.left) +  document.myCompX2  +'px'
+   document.all.myFish1.style.top   = parseInt(document.all.myFish1.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish1Right = parseInt(document.all.myFish1.style.left) + parseInt(document.all.myFish1.width) + 'px'
+   myFish1Bottom = document.all.myFish1.style.top + document.all.myFish1.height
+
+
+   if (parseInt(document.all.myFish1.style.left) <= 0) {
+      document.all.myFish1.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish1.style.top) <= 0) {
+      document.all.myFish1.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish1.style.left) >= 1200) {
+      document.all.myFish1.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish1.style.top) >= 850) {
+      document.all.myFish1.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer2(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish2.style.left  = parseInt(document.all.myFish2.style.left) +  document.myCompX2  +'px'
+   document.all.myFish2.style.top   = parseInt(document.all.myFish2.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish2Right = parseInt(document.all.myFish2.style.left) + parseInt(document.all.myFish2.width) + 'px'
+   myFish2Bottom = document.all.myFish2.style.top + document.all.myFish2.height
+
+
+   if (parseInt(document.all.myFish2.style.left) <= 0) {
+      document.all.myFish2.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish2.style.top) <= 0) {
+      document.all.myFish2.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish2.style.left) >= 1200) {
+      document.all.myFish2.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish2.style.top) >= 850) {
+      document.all.myFish2.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer3(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish3.style.left  = parseInt(document.all.myFish3.style.left) +  document.myCompX2  +'px'
+   document.all.myFish3.style.top   = parseInt(document.all.myFish3.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish3Right = parseInt(document.all.myFish3.style.left) + parseInt(document.all.myFish3.width) + 'px'
+   myFish3Bottom = document.all.myFish3.style.top + document.all.myFish3.height
+
+
+   if (parseInt(document.all.myFish3.style.left) <= 0) {
+      document.all.myFish3.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish3.style.top) <= 0) {
+      document.all.myFish3.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish3.style.left) >= 1200) {
+      document.all.myFish3.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish3.style.top) >= 850) {
+      document.all.myFish3.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer4(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish4.style.left  = parseInt(document.all.myFish4.style.left) +  document.myCompX2  +'px'
+   document.all.myFish4.style.top   = parseInt(document.all.myFish4.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish4Right = parseInt(document.all.myFish4.style.left) + parseInt(document.all.myFish4.width) + 'px'
+   myFish4Bottom = document.all.myFish4.style.top + document.all.myFish4.height
+
+
+   if (parseInt(document.all.myFish4.style.left) <= 0) {
+      document.all.myFish4.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish4.style.top) <= 0) {
+      document.all.myFish4.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish4.style.left) >= 1200) {
+      document.all.myFish4.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish4.style.top) >= 850) {
+      document.all.myFish4.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer5(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish5.style.left  = parseInt(document.all.myFish5.style.left) +  document.myCompX2  +'px'
+   document.all.myFish5.style.top   = parseInt(document.all.myFish5.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish5Right = parseInt(document.all.myFish5.style.left) + parseInt(document.all.myFish5.width) + 'px'
+   myFish5Bottom = document.all.myFish5.style.top + document.all.myFish5.height
+
+
+   if (parseInt(document.all.myFish5.style.left) <= 0) {
+      document.all.myFish5.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish5.style.top) <= 0) {
+      document.all.myFish5.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish5.style.left) >= 1200) {
+      document.all.myFish5.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish5.style.top) >= 850) {
+      document.all.myFish5.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer6(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish6.style.left  = parseInt(document.all.myFish6.style.left) +  document.myCompX2  +'px'
+   document.all.myFish6.style.top   = parseInt(document.all.myFish6.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish6Right = parseInt(document.all.myFish6.style.left) + parseInt(document.all.myFish6.width) + 'px'
+   myFish6Bottom = document.all.myFish6.style.top + document.all.myFish6.height
+
+
+   if (parseInt(document.all.myFish6.style.left) <= 0) {
+      document.all.myFish6.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish6.style.top) <= 0) {
+      document.all.myFish6.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish6.style.left) >= 1200) {
+      document.all.myFish6.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish6.style.top) >= 850) {
+      document.all.myFish6.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer7(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish7.style.left  = parseInt(document.all.myFish7.style.left) +  document.myCompX2  +'px'
+   document.all.myFish7.style.top   = parseInt(document.all.myFish7.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish7Right = parseInt(document.all.myFish7.style.left) + parseInt(document.all.myFish7.width) + 'px'
+   myFish7Bottom = document.all.myFish7.style.top + document.all.myFish7.height
+
+
+   if (parseInt(document.all.myFish7.style.left) <= 0) {
+      document.all.myFish7.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish7.style.top) <= 0) {
+      document.all.myFish7.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish7.style.left) >= 1200) {
+      document.all.myFish7.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish7.style.top) >= 850) {
+      document.all.myFish7.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer8(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish8.style.left  = parseInt(document.all.myFish8.style.left) +  document.myCompX2  +'px'
+   document.all.myFish8.style.top   = parseInt(document.all.myFish8.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish8Right = parseInt(document.all.myFish8.style.left) + parseInt(document.all.myFish8.width) + 'px'
+   myFish8Bottom = document.all.myFish8.style.top + document.all.myFish8.height
+
+
+   if (parseInt(document.all.myFish8.style.left) <= 0) {
+      document.all.myFish8.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish8.style.top) <= 0) {
+      document.all.myFish8.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish8.style.left) >= 1200) {
+      document.all.myFish8.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish8.style.top) >= 850) {
+      document.all.myFish8.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer9(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish9.style.left  = parseInt(document.all.myFish9.style.left) +  document.myCompX2  +'px'
+   document.all.myFish9.style.top   = parseInt(document.all.myFish9.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish9Right = parseInt(document.all.myFish9.style.left) + parseInt(document.all.myFish9.width) + 'px'
+   myFish9Bottom = document.all.myFish9.style.top + document.all.myFish9.height
+
+
+   if (parseInt(document.all.myFish9.style.left) <= 0) {
+      document.all.myFish9.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish9.style.top) <= 0) {
+      document.all.myFish9.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish9.style.left) >= 1200) {
+      document.all.myFish9.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish9.style.top) >= 850) {
+      document.all.myFish9.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer10(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish10.style.left  = parseInt(document.all.myFish10.style.left) +  document.myCompX2  +'px'
+   document.all.myFish10.style.top   = parseInt(document.all.myFish10.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish10Right = parseInt(document.all.myFish10.style.left) + parseInt(document.all.myFish10.width) + 'px'
+   myFish10Bottom = document.all.myFish10.style.top + document.all.myFish10.height
+
+
+   if (parseInt(document.all.myFish10.style.left) <= 0) {
+      document.all.myFish10.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish10.style.top) <= 0) {
+      document.all.myFish10.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish10.style.left) >= 1200) {
+      document.all.myFish10.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish10.style.top) >= 850) {
+      document.all.myFish10.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer11(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish11.style.left  = parseInt(document.all.myFish11.style.left) +  document.myCompX2  +'px'
+   document.all.myFish11.style.top   = parseInt(document.all.myFish11.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish11Right = parseInt(document.all.myFish11.style.left) + parseInt(document.all.myFish11.width) + 'px'
+   myFish11Bottom = document.all.myFish11.style.top + document.all.myFish11.height
+
+
+   if (parseInt(document.all.myFish11.style.left) <= 0) {
+      document.all.myFish11.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish11.style.top) <= 0) {
+      document.all.myFish11.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish11.style.left) >= 1200) {
+      document.all.myFish11.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish11.style.top) >= 850) {
+      document.all.myFish11.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer12(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish12.style.left  = parseInt(document.all.myFish12.style.left) +  document.myCompX2  +'px'
+   document.all.myFish12.style.top   = parseInt(document.all.myFish12.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish12Right = parseInt(document.all.myFish12.style.left) + parseInt(document.all.myFish12.width) + 'px'
+   myFish12Bottom = document.all.myFish12.style.top + document.all.myFish12.height
+
+
+   if (parseInt(document.all.myFish12.style.left) <= 0) {
+      document.all.myFish12.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish12.style.top) <= 0) {
+      document.all.myFish12.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish12.style.left) >= 1200) {
+      document.all.myFish12.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish12.style.top) >= 850) {
+      document.all.myFish12.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer13(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish13.style.left  = parseInt(document.all.myFish13.style.left) +  document.myCompX2  +'px'
+   document.all.myFish13.style.top   = parseInt(document.all.myFish13.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish13Right = parseInt(document.all.myFish13.style.left) + parseInt(document.all.myFish13.width) + 'px'
+   myFish13Bottom = document.all.myFish13.style.top + document.all.myFish13.height
+
+
+   if (parseInt(document.all.myFish13.style.left) <= 0) {
+      document.all.myFish13.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish13.style.top) <= 0) {
+      document.all.myFish13.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish13.style.left) >= 1200) {
+      document.all.myFish13.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish13.style.top) >= 850) {
+      document.all.myFish13.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer14(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish14.style.left  = parseInt(document.all.myFish14.style.left) +  document.myCompX2  +'px'
+   document.all.myFish14.style.top   = parseInt(document.all.myFish14.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish14Right = parseInt(document.all.myFish14.style.left) + parseInt(document.all.myFish14.width) + 'px'
+   myFish14Bottom = document.all.myFish14.style.top + document.all.myFish14.height
+
+
+   if (parseInt(document.all.myFish14.style.left) <= 0) {
+      document.all.myFish14.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish14.style.top) <= 0) {
+      document.all.myFish14.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish14.style.left) >= 1200) {
+      document.all.myFish14.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish14.style.top) >= 850) {
+      document.all.myFish14.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer15(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish15.style.left  = parseInt(document.all.myFish15.style.left) +  document.myCompX2  +'px'
+   document.all.myFish15.style.top   = parseInt(document.all.myFish15.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish15Right = parseInt(document.all.myFish15.style.left) + parseInt(document.all.myFish15.width) + 'px'
+   myFish15Bottom = document.all.myFish15.style.top + document.all.myFish15.height
+
+
+   if (parseInt(document.all.myFish15.style.left) <= 0) {
+      document.all.myFish15.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish15.style.top) <= 0) {
+      document.all.myFish15.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish15.style.left) >= 1200) {
+      document.all.myFish15.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish15.style.top) >= 850) {
+      document.all.myFish15.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer16(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish16.style.left  = parseInt(document.all.myFish16.style.left) +  document.myCompX2  +'px'
+   document.all.myFish16.style.top   = parseInt(document.all.myFish16.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish16Right = parseInt(document.all.myFish16.style.left) + parseInt(document.all.myFish16.width) + 'px'
+   myFish16Bottom = document.all.myFish16.style.top + document.all.myFish16.height
+
+
+   if (parseInt(document.all.myFish16.style.left) <= 0) {
+      document.all.myFish16.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish16.style.top) <= 0) {
+      document.all.myFish16.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish16.style.left) >= 1200) {
+      document.all.myFish16.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish16.style.top) >= 850) {
+      document.all.myFish16.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer17(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish17.style.left  = parseInt(document.all.myFish17.style.left) +  document.myCompX2  +'px'
+   document.all.myFish17.style.top   = parseInt(document.all.myFish17.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish17Right = parseInt(document.all.myFish17.style.left) + parseInt(document.all.myFish17.width) + 'px'
+   myFish17Bottom = document.all.myFish17.style.top + document.all.myFish17.height
+
+
+   if (parseInt(document.all.myFish17.style.left) <= 0) {
+      document.all.myFish17.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish17.style.top) <= 0) {
+      document.all.myFish17.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish17.style.left) >= 1200) {
+      document.all.myFish17.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish17.style.top) >= 850) {
+      document.all.myFish17.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer18(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish18.style.left  = parseInt(document.all.myFish18.style.left) +  document.myCompX2  +'px'
+   document.all.myFish18.style.top   = parseInt(document.all.myFish18.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish18Right = parseInt(document.all.myFish18.style.left) + parseInt(document.all.myFish18.width) + 'px'
+   myFish18Bottom = document.all.myFish18.style.top + document.all.myFish18.height
+
+
+   if (parseInt(document.all.myFish18.style.left) <= 0) {
+      document.all.myFish18.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish18.style.top) <= 0) {
+      document.all.myFish18.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish18.style.left) >= 1200) {
+      document.all.myFish18.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish18.style.top) >= 850) {
+      document.all.myFish18.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer19(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish19.style.left  = parseInt(document.all.myFish19.style.left) +  document.myCompX2  +'px'
+   document.all.myFish19.style.top   = parseInt(document.all.myFish19.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish19Right = parseInt(document.all.myFish19.style.left) + parseInt(document.all.myFish19.width) + 'px'
+   myFish19Bottom = document.all.myFish19.style.top + document.all.myFish19.height
+
+
+   if (parseInt(document.all.myFish19.style.left) <= 0) {
+      document.all.myFish19.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish19.style.top) <= 0) {
+      document.all.myFish19.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish19.style.left) >= 1200) {
+      document.all.myFish19.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish19.style.top) >= 850) {
+      document.all.myFish19.style.top = '850px'
+   }
+   
+   
+}
+
+function myComputer20(){  
+   
+   
+   document.myCompX2 = Math.floor(Math.random()*50 -25)
+   document.myCompY2 = Math.floor(Math.random()*50 -25)
+   
+   
+   document.all.myFish20.style.left  = parseInt(document.all.myFish20.style.left) +  document.myCompX2  +'px'
+   document.all.myFish20.style.top   = parseInt(document.all.myFish20.style.top) +  document.myCompY2  +'px'
+   
+   
+   // CHECK WALLS
+   
+   myFish20Right = parseInt(document.all.myFish20.style.left) + parseInt(document.all.myFish20.width) + 'px'
+   myFish20Bottom = document.all.myFish20.style.top + document.all.myFish20.height
+
+
+   if (parseInt(document.all.myFish20.style.left) <= 0) {
+      document.all.myFish20.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish20.style.top) <= 0) {
+      document.all.myFish20.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myFish20.style.left) >= 1200) {
+      document.all.myFish20.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myFish20.style.top) >= 850) {
+      document.all.myFish20.style.top = '850px'
+   }
+   
+   
+}
+   
+   
+   
+   
+   
+</script>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+<script>
+
+//ELLIS CODE
+
+
+
+
+/*
+
+// DECLARE VARIABLES
+
+document.myInterval = 0
+document.myInterval2 = 0
+document.myHorizontalSpeed = +20
+document.myCompX2 = +5
+document.myCompY2 = +5
+
+
+
+//RANDOM MOVEMENT
+
+function myComputer(){  
+   
+   document.myCompX2 = Math.floor(Math.random()*90 -40)
+   document.myCompY2 = Math.floor(Math.random()*90 -40)
+   
+   
+   document.all.myImage2.style.left  = parseInt(document.all.myImage2.style.left) +  document.myCompX2  +'px'
+   document.all.myImage2.style.top   = parseInt(document.all.myImage2.style.top) +  document.myCompY2  +'px'
+   
+}
+
+
+
+//LINEAR MOVEMENT
+
+function myGo(){
+   
+     document.all.myPlayer.style.left  = parseInt(document.all.myPlayer.style.left) +  document.myHorizontalSpeed  +'px'
+ 
+   // check walls
+   
+   if (parseInt(document.all.myPlayer.style.left) <= 21) {
+      document.myHorizontalSpeed = document.myHorizontalSpeed *-1
+   }
+
+   if (parseInt(document.all.myPlayer.style.left) >= 1200) {
+      document.myHorizontalSpeed = document.myHorizontalSpeed *-1
+   }
+
+
+}
+*/
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+//COLLISION FUNCTION (KINDA IMPOPRTANT)
+  
+function myHitOther(my1,my2){
+   left1   = parseInt(document.getElementById(my1).style.left)
+   right1  = left1 + parseInt(document.getElementById(my1).style.width)
+   top1    = parseInt(document.getElementById(my1).style.top)   
+   bottom1 = top1   + parseInt(document.getElementById(my1).style.height)
+   left2   = parseInt(document.getElementById(my2).style.left)
+
+   right2  = left2 + parseInt(document.getElementById(my2).style.width)
+   top2    = parseInt(document.getElementById(my2).style.top)   
+   bottom2 = top2   + parseInt(document.getElementById(my2).style.height)
+
+   if ((right1  >=  left2  ) &&      	   
+       (bottom1 >=  top2   ) &&
+       (left1   <=  right2 ) &&
+       (top1    <=  bottom2) ){
+       return true
+   }
+} 
+
+</script>
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- BODY WITH STUFF -->
+<body background="http://7-themes.com/data_images/out/14/6814279-underwater-wallpaper.jpg"   
+
+
+
+onkeypress="{
+//DO THIS ON A KEY PRESS
+
+//KEY BINDINGS
+   
+   if (myPause == 'true'){
+      if (String.fromCharCode(event.keyCode).toUpperCase() == 'A'){  
+          document.all.myPlayer.style.left = parseInt(document.all.myPlayer.style.left) -20  +'px'
+      }
+   
+      if (String.fromCharCode(event.keyCode).toUpperCase() == 'D'){
+          document.all.myPlayer.style.left = parseInt(document.all.myPlayer.style.left) +20 + 'px'
+      }
+      
+      if (String.fromCharCode(event.keyCode).toUpperCase() == 'S'){
+          document.all.myPlayer.style.top = parseInt(document.all.myPlayer.style.top) +20 + 'px'
+      }
+          
+      if (String.fromCharCode(event.keyCode).toUpperCase() == 'W'){
+          document.all.myPlayer.style.top = parseInt(document.all.myPlayer.style.top) -20 + 'px'
+      }
+   }
+
+// CHECK BOUNDARIES
+
+   myPlayerRight = parseInt(document.all.myPlayer.style.left) + parseInt(document.all.myPlayer.width) + 'px'
+   myPlayerBottom = document.all.myPlayer.style.top + document.all.myPlayer.height
+
+
+   if (parseInt(document.all.myPlayer.style.left) <= 0) {
+      document.all.myPlayer.style.left = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myPlayer.style.top) <= 0) {
+      document.all.myPlayer.style.top = '0px'
+   
+   }
+   
+   if (parseInt(document.all.myPlayer.style.left) >= 1200) {
+      document.all.myPlayer.style.left = '1200px'
+   
+   }
+   
+   if (parseInt(document.all.myPlayer.style.top) >= 850) {
+      document.all.myPlayer.style.top = '850px'
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+// CHECK IMAGE COLLISIONS
+
+   if (myHitOther('myPlayer','myFish')){
+      document.all.myFish.style.visibility = 'Hidden'
+      myFishDead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish1')){
+      document.all.myFish1.style.visibility = 'Hidden'
+      myFish1Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish2')){
+      document.all.myFish2.style.visibility = 'Hidden'
+      myFish2Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish3')){
+      document.all.myFish3.style.visibility = 'Hidden'
+      myFish3Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish4')){
+      document.all.myFish4.style.visibility = 'Hidden'
+      myFish4Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish5')){
+      document.all.myFish5.style.visibility = 'Hidden'
+      myFish5Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish6')){
+      document.all.myFish6.style.visibility = 'Hidden'
+      myFish6Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish7')){
+      document.all.myFish7.style.visibility = 'Hidden'
+      myFish7Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish8')){
+      document.all.myFish8.style.visibility = 'Hidden'
+      myFish8Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish9')){
+      document.all.myFish9.style.visibility = 'Hidden'
+      myFish9Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish10')){
+      document.all.myFish10.style.visibility = 'Hidden'
+      myFish10Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish11')){
+      document.all.myFish11.style.visibility = 'Hidden'
+      myFish11Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish12')){
+      document.all.myFish12.style.visibility = 'Hidden'
+      myFish12Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish13')){
+      document.all.myFish13.style.visibility = 'Hidden'
+      myFish13Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish14')){
+      document.all.myFish14.style.visibility = 'Hidden'
+      myFish14Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish15')){
+      document.all.myFish15.style.visibility = 'Hidden'
+      myFish15Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish16')){
+      document.all.myFish16.style.visibility = 'Hidden'
+      myFish16Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish17')){
+      document.all.myFish17.style.visibility = 'Hidden'
+      myFish17Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish18')){
+      document.all.myFish18.style.visibility = 'Hidden'
+      myFish18Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish19')){
+      document.all.myFish19.style.visibility = 'Hidden'
+      myFish19Dead=true
+   }
+   
+   if (myHitOther('myPlayer','myFish20')){
+      document.all.myFish20.style.visibility = 'Hidden'
+      myFish20Dead=true
+   }
+   
+   
+   
+   
+   if (myHitOther('myPlayer','myEnemy')){
+   
+   
+       if (confirm('You were eaten. Try again?') == true) {
+              location.href = 'https://preview.c9.io/rainshine/cloud9/www/Ball%20Game/Ball1.html?_c9_id=livepreview0&_c9_host=https://ide.c9.io';
+          } else {
+              location.href = 'https://preview.c9.io/rainshine/cloud9/www/index.html?_c9_id=livepreview1&_c9_host=https://ide.c9.io';
+          }
+      
+
+
+      myPause=true
+   }
+   
+   
+   if (myHitOther('myPlayer','myEnemy1')){
+   
+   
+       if (confirm('You were eaten. Try again?') == true) {
+              location.href = 'https://preview.c9.io/rainshine/cloud9/www/Ball%20Game/Ball1.html?_c9_id=livepreview0&_c9_host=https://ide.c9.io';
+          } else {
+              location.href = 'https://preview.c9.io/rainshine/cloud9/www/index.html?_c9_id=livepreview1&_c9_host=https://ide.c9.io';
+          }
+      
+
+
+      myPause=true
+   }
+   
+   
+
+
+if (myFishDead==true){
+   if(myFish1Dead==true){
+      if(myFish2Dead==true){
+         if(myFish3Dead==true){
+            if(myFish4Dead==true){
+               if(myFish5Dead==true){
+                  if(myFish6Dead==true){
+                     if(myFish7Dead==true){
+                        if(myFish8Dead==true){
+                           if(myFish9Dead==true){
+                             if(myFish10Dead==true){
+                                 if(myFish11Dead==true){
+                                    if(myFish12Dead==true){
+                                       if(myFish13Dead==true){
+                                          if(myFish14Dead==true){
+                                             if(myFish15Dead==true){
+                                                if(myFish16Dead==true){
+                                                   if(myFish17Dead==true){
+                                                      if(myFish18Dead==true){
+                                                         if(myFish19Dead==true){
+                                                            if(myFish20Dead==true){
+                                                               if (confirm('You Win! Play again?') == true) {
+                                                                 location.href = 'Ball.html';
+                                                                } else {
+                                                                 location.href = 'https://cloud9-rainshine.c9.io/';
+                                                                }
+                                                            }
+                                                         }
+                                                      }
+                                                   }
+                                                }
+                                             }
+                                          }
+                                       }
+                                    }
+                                 }
+                              } 
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+
+
+}">
+   
+
+   
+   
+   
+
+   
+
+
+
+
+
+
+
+
+
+<!-- IMAGES AND TEXT -->
+
+<!-- TEXT -->
+
+<style>
+div.title {
+    position: relative;
+    left: 150px;
+}
+</style>
+<style>
+div.instructions {
+    position: relative;
+    left: 40px;
+    top: 800px;
+}
+</style>
+<style>
+div.instructions1 {
+    position: relative;
+    left: 1040px;
+    top: 780px;
+}
+</style>
+<style>
+div.instructions2 {
+    position: relative;
+    left: 525px;
+    top: 800px;
+}
+</style>
+
+<div class="title">
+   <font color=white face='Verdana' size=7>
+   Well it looks like you're a fish now.
+   </font>
+</div>
+
+<div class="instructions">
+   <font color=white face='Verdana' size=3>
+   Eat all the minnows to win
+   </font>
+</div>
+<div class="instructions1">
+   <font color=white face='Verdana' size=3>
+   Don't get eaten
+   </font>
+</div>
+<div class="instructions2">
+   <font color=white face='Verdana' size=3>
+   Press Resume to begin
+   </font>
+</div>
+
+
+
+<!--
+// <img id="myImage2" src="SuperBall_Mini_red.jpg"  style="position:absolute; width:50px; height:50px;  left:300px; top:240px;"/>
+-->
+
+
+
+
+
+<!-- Images -->
+
+<img id="myEnemy" src="Enemy.gif"  style="position:absolute; width:150px; height:100px;  left:500px; top:500px;"/>
+<img id="myEnemy1" src="Enemy.gif"  style="position:absolute; width:150px; height:100px;  left:100px; top:700px;"/>
+
+<img id="myFish" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:600px; top:100px;"/>
+<img id="myFish1" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:500px; top:0px;"/>
+<img id="myFish2" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:200px; top:500px;"/>
+<img id="myFish3" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:300px; top:800px;"/>
+<img id="myFish4" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:500px; top:600px;"/>
+<img id="myFish5" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:900px; top:500px;"/>
+<img id="myFish6" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:500px; top:400px;"/>
+<img id="myFish7" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:1000px; top:300px;"/>
+<img id="myFish8" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:1100px; top:200px;"/>
+<img id="myFish9" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:100px; top:100px;"/>
+<img id="myFish10" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:600px; top:700px;"/>
+<img id="myFish11" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:700px; top:400px;"/>
+<img id="myFish12" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:800px; top:100px;"/>
+<img id="myFish13" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:900px; top:800px;"/>
+<img id="myFish14" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:900px; top:800px;"/>
+<img id="myFish15" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:200px; top:700px;"/>
+<img id="myFish16" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:400px; top:600px;"/>
+<img id="myFish17" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:1100px; top:500px;"/>
+<img id="myFish18" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:1000px; top:800px;"/>
+<img id="myFish19" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:0px; top:300px;"/>
+<img id="myFish20" src="http://www.aquabeek.nl/CMS/data/upimages/vissen15.gif"  style="position:absolute; width:50px; height:20px;  left:500px; top:300px;"/>
+
+
+
+
+
+
+
+
+<img id="myPlayer" src="http://4.bp.blogspot.com/-3WS_6Z9hGcg/Te7BkdT2VyI/AAAAAAAAAXw/fiOHDkQLqiY/s1600/FISHAN.GIF"  style="position:absolute; width:50px; height:50px;  left:500px; top:240px;"/>
+<img id="myBorder" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Blank_square.svg/2000px-Blank_square.svg.png"  style="position:absolute; width:1250px; height:900px;  left:0px; top:0px;"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+parseint
+parseintInt(document.all.myMoon.style.left
+change website - location = "http:// etc "
+
+in <img>, style= "visibility:visible/invisible">
+then onlick or if <etc>    document.all.id of img.style.visibility = "hidden etc"
+
+
+
+
+-->
+
+
+
+
+<!-- OLD BUTTONS -->
+
+<!--
+//   <input type=button value="auto go" onclick="{ 
+//      clearInterval(document.myInterval1); 
+//      document.myInterval1 = setInterval('myGo()',200)   
+//   }">
+//   
+//   <input type=button value=stop onclick="{ 
+//      clearInterval(document.myInterval1)
+//      clearInterval(document.myInterval2)  
+//   }">
+//   
+//   <input type=button value="random" onclick="{ 
+//      clearInterval(document.myInterval2); 
+//      document.myInterval2 = setInterval('myComputer()',200)   
+//   }">
+-->
+
+
+
+
+
+<!-- NEW BUTTONS -->
+<!--
+   <input type=button value="random" onclick="{ 
+         clearInterval(document.myInterval1); 
+         document.myInterval1 = setInterval('myMove()',200)   
+   }">
+-->
+<!--
+   <input type=button value="Resume" id=myResume style="position:absolute; left:0px; top:0px;" onclick="{
+   
+      
+      document.Random = Math.floor(Math.random()*50 -25)
+      document.myInterval1 = 0
+   
+   
+   //RANDOM MOVEMENT FUNCTION
+      
+         clearInterval(document.myInterval2); 
+         document.myInterval2 = setInterval('myComputer()',200)
+//       document.all.myFish.style.left  = parseInt(document.all.myFish.style.left) +  document.Random  +'px'
+//       document.all.myFish.style.top   = parseInt(document.all.myFish.style.top) +  document.Random  +'px'
+      
+   
+   
+   
+   
+   
+   
+   
+   }">
+   -->
+   
+<input type=image src="http://dabuttonfactory.com/button.png?t=Resume&f=Caviar-Bold&ts=20&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=fca916&ebgc=fd5151&be=1" value="Resume" style="position:absolute; left:100px; top:900px;"  onclick="{ 
+   clearInterval(document.myInterval1)
+   clearInterval(document.myInterval2) 
+   clearInterval(document.myInterval3) 
+   clearInterval(document.myInterval4) 
+   clearInterval(document.myInterval5) 
+   clearInterval(document.myInterval6) 
+   clearInterval(document.myInterval7) 
+   clearInterval(document.myInterval8) 
+   clearInterval(document.myInterval9) 
+   clearInterval(document.myInterval10) 
+   clearInterval(document.myInterval11) 
+   clearInterval(document.myInterval12) 
+   clearInterval(document.myInterval13) 
+   clearInterval(document.myInterval14) 
+   clearInterval(document.myInterval15) 
+   clearInterval(document.myInterval16) 
+   clearInterval(document.myInterval17) 
+   clearInterval(document.myInterval18) 
+   clearInterval(document.myInterval19) 
+   clearInterval(document.myInterval20) 
+   clearInterval(document.myInterval21) 
+   clearInterval(document.myInterval22) 
+   clearInterval(document.myInterval23) 
+   
+   
+   
+   
+   document.myInterval1 = setInterval('myComputer()',200)
+   document.myInterval2 = setInterval('myComputer1()',200)
+   document.myInterval3 = setInterval('myComputer2()',200)
+   document.myInterval4 = setInterval('myComputer3()',200)
+   document.myInterval5 = setInterval('myComputer4()',200)
+   document.myInterval6 = setInterval('myComputer5()',200)
+   document.myInterval7 = setInterval('myComputer6()',200)
+   document.myInterval8 = setInterval('myComputer7()',200)
+   document.myInterval9 = setInterval('myComputer8()',200)
+   document.myInterval10 = setInterval('myComputer9()',200)
+   document.myInterval11 = setInterval('myComputer10()',200)
+   document.myInterval12 = setInterval('myComputer11()',200)
+   document.myInterval13 = setInterval('myComputer12()',200)
+   document.myInterval14 = setInterval('myComputer13()',200)
+   document.myInterval15 = setInterval('myComputer14()',200)
+   document.myInterval16 = setInterval('myComputer15()',200)
+   document.myInterval17 = setInterval('myComputer16()',200)
+   document.myInterval18 = setInterval('myComputer17()',200)
+   document.myInterval19 = setInterval('myComputer18()',200)
+   document.myInterval20 = setInterval('myComputer19()',200)
+   document.myInterval21 = setInterval('myComputer20()',200)
+   
+   document.myInterval22 = setInterval('myLinear()',2.5)
+   document.myInterval23 = setInterval('myLinear1()',2.5)
+   
+   myPause= 'true'
+}">
+
+<input type=image src='http://dabuttonfactory.com/button.png?t=Pause&f=Caviar-Bold&ts=20&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=fca916&ebgc=fd5151&be=1' value=Pause style="position:absolute; left:1000px; top:900px;" onclick="{ 
+   clearInterval(document.myInterval1)
+   clearInterval(document.myInterval2)
+   clearInterval(document.myInterval3)
+   clearInterval(document.myInterval4)
+   clearInterval(document.myInterval5)
+   clearInterval(document.myInterval6)
+   clearInterval(document.myInterval7)
+   clearInterval(document.myInterval8)
+   clearInterval(document.myInterval9)
+   clearInterval(document.myInterval10)
+   clearInterval(document.myInterval11)
+   clearInterval(document.myInterval12)
+   clearInterval(document.myInterval13)
+   clearInterval(document.myInterval14)
+   clearInterval(document.myInterval15)
+   clearInterval(document.myInterval16)
+   clearInterval(document.myInterval17)
+   clearInterval(document.myInterval18)
+   clearInterval(document.myInterval19)
+   clearInterval(document.myInterval20)
+   clearInterval(document.myInterval21)
+   clearInterval(document.myInterval22)
+   clearInterval(document.myInterval23)
+   myPause= 'false'
+}">
+
+
+
+
+
+<BR><BR><BR><BR><BR><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<input type=image value='Small Breed' src= 'http://dabuttonfactory.com/button.png?t=Back&f=Droid+Serif-Bold&ts=24&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=0&bgt=gradient&bgc=2a2a2a&ebgc=000' onclick="{location ='https://preview.c9.io/rainshine/cloud9/www/index.html'}">
+
+
+
+
+</body>
+
+
+
+
+
+</html>
