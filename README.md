@@ -19,6 +19,7 @@ With limited development and debugging time, it was found that the proportional 
 These are two related games created during high school. Coded in Javascript, they are simple arcade style games aimed to be intuitive and fun.\
 I'm hoping to refurbish and revamp these games as a self-development project in the near future, as well as hopefully make them available for play.
 #### 3. C Projects
-A small collection of Programs in C for various (mostly learning) purposes
+A small collection of Programs in C for various (mostly learning) purposes\
+Contains a money-tracking Betting game, a bitmap image manipulator, and a Seven Segment Display Controller
 #### More to come!
 
