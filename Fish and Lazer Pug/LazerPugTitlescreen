@@ -1,0 +1,65 @@
+<body background="http://www.oocities.org/southbeach/sands/3142/rain_forrest.gif" >
+    <img src=Assets/Pug_Left.gif style="position:absolute; height:500px; top:400px; left:500px;">
+<script>
+    document.myVisible = 0;
+</script>
+<div align=center>    
+<div id=myTitle align=center style=" height:66px; width:616px;">
+    <br>
+    <font color=black face=Verdana size=5> ~ LASER PUG - MASTER DINO HUNTER ~ </font>
+</div>  
+<br>
+<input type=image src='http://dabuttonfactory.com/button.png?t=Play&f=Bellota-Bold&ts=24&tc=000&hp=80&vp=13&c=0&bgt=unicolored&bgc=ffe599&bs=8&bc=783f04' onClick="{
+    location.assign('https://preview.c9users.io/rainshine/cloud9/not-yet-working/x25-animations-game/GAME.html?_c9_id=livepreview0&_c9_host=https://ide.c9.io')
+}">
+<br>
+<br>
+<input type=image src='http://dabuttonfactory.com/button.png?t=Instructions&f=Bellota-Bold&ts=24&tc=000&hp=37&vp=13&c=0&bgt=unicolored&bgc=ffe599&bs=8&bc=783f04' onClick="{
+    
+    
+        document.getElementById('myInstructions').style.visibility = 'visible'
+    
+      
+
+}">   
+<br>
+<br>
+<br>
+<div align=center id=myInstructions style=" top:500px; height:240px; width:416px; visibility:hidden" >
+    <br>
+    <font face=Verdana size=5>
+        INSTRUCTIONS<br>
+    </font>
+    <font face=verdana size=2>
+        Your name is Cuddles, and you're a proffessional <br> triceratops hunting pug.<br>
+        Your job is to hunt as many triceratops as possible.<br>
+        Use WASD to move, and Q to fire your lasers.<br>
+        Use caution when near Trikes, they are quite capable of  <br> defending themselves with their horns.<br>
+        Also, there are rumours of a Carnotaurus on the loose!<br>
+        Your lasers wont be able to harm the beast, so avoid him <br> at all costs!<br>
+        Good Luck!
+    </font>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
+<style>
+    #myInstructions{
+        background-image: url("http://dabuttonfactory.com/button.png?t=&f=Bellota-Bold&ts=24&tc=000&hp=200&vp=100&c=0&bgt=unicolored&bgc=ffe599&bs=8&bc=783f04")
+    }
+    #myTitle{
+        background-image: url("http://dabuttonfactory.com/button.png?t=&f=Bellota-Bold&ts=24&tc=000&hp=300&vp=13&c=0&bgt=unicolored&bgc=ffe599&bs=8&bc=783f04")
+    }
+</style>
+</div>
+    
+</body>
