@@ -1,5 +1,6 @@
 # Javascript games
 ### Follow these links to play!
+Please note that due to the relocation of this code, all assets are currently unlinked. Not currently playable!
 [Lazer Pug](https://minnietj.github.io/Fish%20and%20Lazer%20Pug/LazerPug-OriginalEdition.html)\
 [Fish Eat Fish](https://minnietj.github.io/Fish%20and%20Lazer%20Pug/FishEatFish-OriginalEdition.html)
 
