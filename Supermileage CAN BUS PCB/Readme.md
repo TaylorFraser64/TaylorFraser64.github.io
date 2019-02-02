@@ -8,5 +8,5 @@ The microcontroller communicates with the CAN controller via SPI communications,
 The primary immediate purpose of this PCB is to interperet CAN BUS signals from the steering wheel to control headlights.
 The microcontroller has a total of four GPIO pins attached to opto-isolators and MOSFETs. 
 These opto-isolators can then be connected to the headlight circuitry to supply and remove power./
-The Microcontroller was programmed using a library provided by github user Spirilis - https://github.com/spirilis/mcp2515 /
-This project is currently still under develop0ment, and is expected to be completed by competition day in May.
+The Microcontroller was programmed using a library provided by github user Spirilis - https://github.com/spirilis/mcp2515/
+This project is currently still under development, and is expected to be completed by competition day in May.
