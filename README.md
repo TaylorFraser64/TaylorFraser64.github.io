@@ -1,7 +1,6 @@
 # Taylor's Projects 
-### Hello Dear Visitor!
+### Welcome!
 
-Welcome to my collection of projects!\
 The purpose of this repository is mainly allow job recruiters to view my past projects and any nifty things I've created.\
 These projects range in quality from small webgames made during my highschool free time, to legitimate code for university projects.\
 This repository is constantly growing as I work to retrieve old projects, and work on new ones.\
@@ -21,5 +20,9 @@ I'm hoping to refurbish and revamp these games as a self-development project in 
 #### 3. C Projects
 A small collection of Programs in C for various (mostly learning) purposes\
 Contains a money-tracking Betting game, a bitmap image manipulator, and a Seven Segment Display Controller
+#### 3. Supermileage CAN BUS PCB
+A description and project files for the custom PCB designed for UBC's Supermileage design team.\
+The purpose of this projects was to enable communications between elements such as healights and steering wheel driver inputs through the CAN BUS LAN communiaction protocol.
+This project uses a Texas Instruments MSP430 2553 microcontroller, MCP2515 CAN controller IC, and a CAN tranceiver.
 #### More to come!
 
