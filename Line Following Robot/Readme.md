@@ -9,5 +9,5 @@ This project was created in the fall of 2018 for my Integrated engineering desig
 The project was a success! Sharkie the shark-themed robot was able to follow the test course flawlessly. 
 Please feel free to ask me any questions about this project at minnietj@hotmail.com 
 Thanks!
-![stack Overflow](http://lmsotfy.com/so.png)
+![stack Overflow](https://github.com/Minnietj/minnietj.github.io/blob/master/Line%20Following%20Robot/IMG_20190124_141636.jpg)
       
