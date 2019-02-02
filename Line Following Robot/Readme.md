@@ -1,5 +1,5 @@
 
-## This is a collection of my code used to control my autonomous line following robot.\
+## This is a collection of my code used to control my autonomous line following robot.
 The course consisted of a black electrical tape line on a white plastic board; it included 
 intersections, blind 90' turns, missing sections, and slow curves. \
 The robot consisted of a hand soldered sensor board, H-bridge circuit, and ATmega microcontroller mounted on a custom fabricated chassis.\
