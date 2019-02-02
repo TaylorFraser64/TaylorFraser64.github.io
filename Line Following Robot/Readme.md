@@ -10,6 +10,9 @@ The project was a success! Sharkie the shark-themed robot was able to follow the
 Please feel free to ask me any questions about this project at minnietj@hotmail.com\
 Thanks!\
 \
-Please check below for pictures and video!\\
-![stack Overflow](https://github.com/Minnietj/minnietj.github.io/blob/master/Line%20Following%20Robot/IMG_20190124_141636.jpg)
+Please check below for pictures and video!\
+![stack Overflow](https://github.com/Minnietj/minnietj.github.io/blob/master/Line%20Following%20Robot/IMG_20190124_141636.jpg)\
+<video width="320" height="240" controls>
+  <source src="https://github.com/Minnietj/minnietj.github.io/blob/master/Line%20Following%20Robot/VID_20190115_102250%20(1).mp4" type="video/mp4">
+</video>
       
