@@ -1,4 +1,4 @@
-## This is a Folder for the Description of my Can Bus PCB
+Multipurpose CAN BUS PCB
 In the 2018/2019 winter session, I have had the priveledge of working in UBC's Supermileage team to design a multipurpose PCB to
 communicate over the CAN BUS communiaction protocol.\
 The purpose of this project was to the wiring complexity on their Urban vehicle and reduce the overall vehicle weight.\
