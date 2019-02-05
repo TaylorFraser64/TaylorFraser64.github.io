@@ -9,6 +9,6 @@ The primary immediate purpose of this PCB is to interperet CAN BUS signals from 
 The microcontroller has a total of four GPIO pins attached to opto-isolators and MOSFETs. 
 These opto-isolators can then be connected to the headlight circuitry to supply and remove power./
 The Microcontroller was programmed using a library provided by github user Spirilis - https://github.com/spirilis/mcp2515/
-This project is currently still under development, and is expected to be completed by competition day in May.\
-** Will have schematic images uploaded on Sunday after I remedy issues regarding my Altium license!
+This project is currently still under development, and is expected to be completed by competition day in May.
 ![Flowchart](https://github.com/Minnietj/minnietj.github.io/blob/master/Supermileage%20CAN%20BUS%20PCB/Supermileage%20Flowchart.PNG)
+![Schematic](https://github.com/Minnietj/minnietj.github.io/blob/master/Supermileage%20CAN%20BUS%20PCB/Schematic.PNG)
