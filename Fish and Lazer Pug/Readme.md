@@ -2,7 +2,7 @@
 ### Follow these links to play!
 These games were originally coded on the now AWS service cloud9, and are in the process of being migrated.\
 Lazer pug is fully playable, but Fish eat Fish requires some attention to relink assets and fix some code.\
-As a personal project, I am hoping to revisit and refurbish these programs.
+As a personal project, I am hoping to revisit and refurbish these programs.\
 [Lazer Pug](https://minnietj.github.io/Fish%20and%20Lazer%20Pug/LazerPugTitlescreen.html)\
 [Fish Eat Fish](https://minnietj.github.io/Fish%20and%20Lazer%20Pug/FishEatFish-OriginalEdition.html)
 
