@@ -1,9 +1,4 @@
-/*
- * Author: Paul Carter
- * Date: October 18, 2009
- * Purpose: A program that performs basic image manipulations on 
- * 24-bit uncompressed .bmp image files.
- */
+
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
@@ -142,10 +137,6 @@ int getMax( int num1, int num2, int num3 )
 
 
 
-
-/* *** WARNING - DO NOT MODIFY ANY OF THE CODE BELOW *** */
-
-/* *** NOTE - YOU ARE NOT EXPECTED TO UNDERSTAND THE CODE BELOW *** */
 
 int main( void )
 {
@@ -378,6 +369,7 @@ int isBMP( char header[] )
  * Param: inFile - pointer to file containing image (assumed to be open for reading in binary mode)
  * Return: number of bytes read from file
  */
+
 int readRawData( int* red, int* green, int* blue, int imgSize, int imgWidth, FILE* inFile )
 {
     int index;
