@@ -6,7 +6,7 @@ These projects range from small webgames made in my highschool free time, to cod
 This repository is constantly growing as I work to retrieve old projects, and work on new ones.\
 \
 Thanks for viewing!\
-If you have any questions, please feel free to contact me at taylor.fraser64@gmail.com\
+If you have any questions, please feel free to contact me at taylor.fraser64@gmail.com
 
 
 ## Index:
