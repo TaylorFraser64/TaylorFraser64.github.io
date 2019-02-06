@@ -7,7 +7,7 @@
 //Date : 4/4/17
 //
 // OPTIONAL PART: You can change the speed of the scrolling with Switch 1. 
-//                I didnt have time to implement the direction change (It would have been kinda janky anyway with the way I implemented the scrolling).
+//               
 */
 
 
