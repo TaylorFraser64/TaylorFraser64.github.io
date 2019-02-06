@@ -1,4 +1,8 @@
-
+/*
+*Author: Taylor Fraser
+*Purpose: A simple Betting game. User inputs value of wallet, can bet money. 
+*Wallet value is monitored and kept track of.
+*/
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
@@ -23,7 +27,7 @@ int main(void){
 	int pointVal;
 	int playAgain = 1;
 
-	printf("WELCOME TO TAYLORS AMAAAZING GAME OF CHANCE!!1!!111\nnno sarcasm at all...\n\n");
+	printf("WELCOME TO TAYLORS AMAAAZING GAME OF CHANCE!!\n\n");
 
 	printf("How much money do you have to play with?\n");
 	scanf("%i", &wallet);
@@ -116,6 +120,10 @@ int main(void){
 	return 0;
 }
 
+/* A function to simulate the solling of a standard die.
+*Inputs: none
+*Returns: Value between 1 - 6
+*/
 int rollDie(void){
 	srand(time(0));
 	int num;
@@ -123,6 +131,12 @@ int rollDie(void){
 	return num;
 }
 
+
+/* A function to simulate the rolling of two dice
+*Inputs: none
+*Returns: Value between 1 - 12
+*Dependency on rollDie()
+*/
 int roll2Die(void){
 	int num1 = rollDie();
 	int num2 = rollDie();
