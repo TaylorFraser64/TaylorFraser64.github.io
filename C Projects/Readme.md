@@ -3,8 +3,7 @@
 ### Betting Game
 A small game where money is bet and counted.\
 This program begins by asking the user how much money they have in their wallet. This money will be tracked for the rest of the game.\
-The game then asks how much money the user would like to bet.\
-The game simulated the rolling of two die, and informs the user if they have won or not.\
+The game then asks how much money the user would like to bet, and simulates the rolling of two die.
 In case of a win, the user wins their bet.\
 In case of a loss, the user loses it.\
 Should the user run out of money, the game will end.
