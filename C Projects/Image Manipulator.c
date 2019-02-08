@@ -40,8 +40,6 @@ int isBMP( char[] );
 int writeHeader( char[], FILE* );
 int writeRawData( int*, int*, int*, int, int, FILE* );
 void freeAll( int*, int*, int* );
-
-/* prototypes for functions you will write */
 void greyScale( int[], int[], int[], int );
 void createNegative( int[], int[], int[], int );
 void filterColour( int[], int[], int[], int, int );
@@ -50,13 +48,14 @@ int getMax( int, int, int );
 
 /* image manipulation functions start here */
 
-/*
- * Applies a red, green or blue filter to the image.
- * Param: red - red component of image pixels (stored row by row)
- * Param: green - green component of image pixels (stored row by row)
- * Param: blue - blue component of image pixels (stored row by row)
- * Param: imgSize - size of image in pixels
- * Param: colour - one of RED, GREEN or BLUE to specify colour of filter
+/* Function: filterColour
+ * Purpose: Applies a red, green or blue filter to the image.
+ * input: red - red component of image pixels (stored row by row)
+ * input: green - green component of image pixels (stored row by row)
+ * input: blue - blue component of image pixels (stored row by row)
+ * input: imgSize - size of image in pixels
+ * input: colour - one of RED, GREEN or BLUE to specify colour of filter
+ * Returns: None
  */
 void filterColour( int red[], int green[], int blue[], int imgSize, int colour )
 {
@@ -78,24 +77,31 @@ void filterColour( int red[], int green[], int blue[], int imgSize, int colour )
 	}
 }
 
-/*
- * Creates a colour negative of the image.
- * Param: red - red component of image pixels (stored row by row)
- * Param: green - green component of image pixels (stored row by row)
- * Param: blue - blue component of image pixels (stored row by row)
- * Param: imgSize - size of image in pixels
+/* Function: createNegative
+ * Purpose: Creates a colour negative of the image.
+ * input: red - red component of image pixels (stored row by row)
+ * input: green - green component of image pixels (stored row by row)
+ * input: blue - blue component of image pixels (stored row by row)
+ * input: imgSize - size of image in pixels
  */
 void createNegative( int red[], int green[], int blue[], int imgSize )
 {
-	/* stub */
+	int index;
+	for(index = 0; index < imgSize; index++){
+		green[index] = abs(255-green[index]);
+		blue[index] = abs(255-blue[index]);
+		red[index] = abs(255-red[index]);
+
+	}
 }
 
-/* 
+/* Function: greyScale
  * Converts image to grey scale
- * Param: red - red component of image pixels (stored row by row)
- * Param: green - green component of image pixels (stored row by row)
- * Param: blue - blue component of image pixels (stored row by row)
- * Param: imgSize - size of image in pixels
+ * input: red - red component of image pixels (stored row by row)
+ * input: green - green component of image pixels (stored row by row)
+ * input: blue - blue component of image pixels (stored row by row)
+ * input: imgSize - size of image in pixels
+ * Returns: None
  */
 void greyScale( int red[], int green[], int blue[], int imgSize )
 {
@@ -110,10 +116,10 @@ void greyScale( int red[], int green[], int blue[], int imgSize )
 
 }
 
-/* 
- * Computes the maximum of the values passed as parameters
- * Param: num1, num2, num3: values whose max we wish to compute
- * Return: maximum of num1, num2, num3
+/* Function: Get max
+ * Purpose: Computes the maximum of the values passed as parameters
+ * input: num1, num2, num3: values whose max we wish to compute
+ * Returns: maximum of num1, num2, num3
  */
 int getMax( int num1, int num2, int num3 )
 {
@@ -198,9 +204,9 @@ int main( void )
 }
 
 
-/*
- * Provides the user with a menu and returns user's choice.
- * Rejects selections that are not valid.
+/* Function: getUserOption
+ * Purpose: Provides the user with a menu and returns user's choice, and
+ * rejects selections that are not valid.
  * Param: whichOption - one of OPERATION (to choose which
  * an image transformation) or FILTER (to choose a filter colour)
  * Return: user's selection
@@ -223,12 +229,10 @@ int getUserOption( int whichOption )
 }
 
 
-/*
- * Checks validity of user's choice.  
- * Note: we get away with a function that takes only one parameter
- * because all menus currently have the same choices: 0, 1 or 2.  
- * Param: userOption - option selected by user
- * Return: true if userOption is a valid choice, false otherwise 
+/* Function: isValid
+ * Purpose: Checks validity of user's choice.   
+ * input: userOption - option selected by user
+ * Returns: true if userOption is a valid choice, false otherwise 
  */
 int isValid( int userOption )
 {
@@ -236,9 +240,10 @@ int isValid( int userOption )
 }
 
 
-/*
- * Prints a menu of options for the user
- * Param: whichMenu - currently one of OPERATION or COLOUR_FILTER
+/* Function: printMenu
+ * Purpose: Prints a menu of options for the user
+ * input: whichMenu - currently one of OPERATION or COLOUR_FILTER
+ * Returns: None
  */
 void printMenu( int whichMenu )
 {
@@ -259,9 +264,10 @@ void printMenu( int whichMenu )
 }
 
 
-/* 
- * Adds .bmp extension to file name 
- * Param: fileName - name of file
+/* Function: Add extension
+ * Purpose: Adds .bmp extension to file name 
+ * input: fileName - name of file
+ * Returns: None
  */
 void addExtension( char fileName[] )
 {
@@ -281,15 +287,15 @@ void addExtension( char fileName[] )
 }
 
 
-/*
- * Reads header information and red/green/blue components of each pixel in image
- * Param: header - will contain file header information at end of function call
- * Param: red - address of array that will contain red component of image pixels at end of function call
- * Param: green - address of array that will contain green component of image pixels at end of function call
- * Param: blue - address of array that will contain blue component of image pixels at end of function call
- * Param: imgWidth - address of int that will store width of image in pixels
- * Param: imgHeight - address of int that will store height of image in pixels
- * Return: TRUE if uncompressed bmp image of size WIDTH by HEIGHT is read from file, FALSE otherwise
+/* Function: ReadFile 
+ * Purose: Reads header information and red/green/blue components of each pixel in image
+ * input: header - will contain file header information at end of function call
+ * input: red - address of array that will contain red component of image pixels at end of function call
+ * input: green - address of array that will contain green component of image pixels at end of function call
+ * input: blue - address of array that will contain blue component of image pixels at end of function call
+ * input: imgWidth - address of int that will store width of image in pixels
+ * input: imgHeight - address of int that will store height of image in pixels
+ * Returns: TRUE if uncompressed bmp image of size WIDTH by HEIGHT is read from file, FALSE otherwise
  */
 int readFile( char inFileName[], char header[], 
 			 int** red, int** green, int** blue, int* imgWidth, int* imgHeight )
@@ -337,37 +343,37 @@ int readFile( char inFileName[], char header[],
         return FALSE;
 }
 
-/*
- * Reads header information from file
- * Param: header - will contain file header information at end of function call
- * Param: inFile - pointer to file containing image (assumed to be open for reading in binary mode)
- * Return: number of bytes read
+/* Function: Read Header
+ * Purpose: Reads header information from file
+ * input: header - will contain file header information at end of function call
+ * input: inFile - pointer to file containing image (assumed to be open for reading in binary mode)
+ * Returns: number of bytes read
  */
 int readHeader( char header[], FILE* inFile )
 {
     return fread( header, sizeof( char ), HEADER_SIZE, inFile );
 }
 
-/*
- * Determines if file has bitmap format by checking magic number in first two bytes
+/*Function: isBMP
+ * Purpose: Determines if file has bitmap format by checking magic number in first two bytes
  * - must be 'BM' in first two bytes
- * Param: file header information
- * Return: TRUE if bmp file, FALSE otherwise
+ * input: file header information
+ * Returns: TRUE if bmp file, FALSE otherwise
  */
 int isBMP( char header[] )
 {
     return( header[0] == 0x42 && header[1] == 0x4D );        
 }
 
-/* 
- * Reads raw image data into red/green/blue arrays
- * Param: red - array that will contain red component of image pixels (stored row by row) at end of function call
- * Param: green - array that will contain green component of image pixels (stored row by row) at end of function call
- * Param: blue - array that will contain blue component of image pixels (stored row by row) at end of function call
- * Param: imgSize - size of image in pixels
- * Param: imgWidth - width of image in pixels
- * Param: inFile - pointer to file containing image (assumed to be open for reading in binary mode)
- * Return: number of bytes read from file
+/* Function: readRawData
+ * Purpose: Reads raw image data into red/green/blue arrays
+ * input: red - array that will contain red component of image pixels (stored row by row) at end of function call
+ * input: green - array that will contain green component of image pixels (stored row by row) at end of function call
+ * input: blue - array that will contain blue component of image pixels (stored row by row) at end of function call
+ * input: imgSize - size of image in pixels
+ * input: imgWidth - width of image in pixels
+ * input: inFile - pointer to file containing image (assumed to be open for reading in binary mode)
+ * Returns: number of bytes read from file
  */
 
 int readRawData( int* red, int* green, int* blue, int imgSize, int imgWidth, FILE* inFile )
@@ -395,16 +401,16 @@ int readRawData( int* red, int* green, int* blue, int imgSize, int imgWidth, FIL
     return bytesRead;
 }
 
-/*
- * Writes image data to file.
- * Param: fileName - name of file to which image is to be written
- * Param: header - image header information
- * Param: red - array that contains red component of image pixels (stored row by row)
- * Param: green - array that contains green component of image pixels (stored row by row)
- * Param: blue - array that contains blue component of image pixels (stored row by row)
- * Param: imgSize - size of image in pixels
- * Param: imgWidth - width of image in pixels
- * Return: TRUE if image was written to file, FALSE otherwise
+/* Function: writeFile
+ * Purpose: Writes image data to file.
+ * input: fileName - name of file to which image is to be written
+ * input: header - image header information
+ * input: red - array that contains red component of image pixels (stored row by row)
+ * input: green - array that contains green component of image pixels (stored row by row)
+ * input: blue - array that contains blue component of image pixels (stored row by row)
+ * input: imgSize - size of image in pixels
+ * input: imgWidth - width of image in pixels
+ * Returns: TRUE if image was written to file, FALSE otherwise
  */
 int writeFile( char fileName[], char header[], int* red, int* green, int* blue, int imgSize, int imgWidth )
 {
@@ -430,26 +436,26 @@ int writeFile( char fileName[], char header[], int* red, int* green, int* blue, 
         return FALSE;
 }
 
-/*
- * Writes image header information to file 
- * Param: header - image header information
- * Param: outFile - pointer to file to which image is to be written (assumed to be open for writing in binary mode)
- * Return: number of bytes written to file
+/* Function: writeHeader
+ * Purpose: Writes image header information to file 
+ * input: header - image header information
+ * input: outFile - pointer to file to which image is to be written (assumed to be open for writing in binary mode)
+ * Returns: number of bytes written to file
  */
 int writeHeader( char header[], FILE* outFile )
 {
     return fwrite( header, sizeof( char ), HEADER_SIZE, outFile );
 }
 
-/*
- * Writes raw image data to file
- * Param: red - array that contains red component of image pixels (stored row by row)
- * Param: green - array that contains green component of image pixels (stored row by row)
- * Param: blue - array that contains blue component of image pixels (stored row by row)
- * Param: imgSize - size of image in pixels
- * Param: imgWidth - width of image in pixels
- * Param: outFile - pointer to file to which image is to be written (assumed to be open for writing in binary mode)
- * Return: number of bytes written to file
+/* Function: writeRawData
+ * Purpose: Writes raw image data to file
+ * input: red - array that contains red component of image pixels (stored row by row)
+ * input: green - array that contains green component of image pixels (stored row by row)
+ * input: blue - array that contains blue component of image pixels (stored row by row)
+ * input: imgSize - size of image in pixels
+ * input: imgWidth - width of image in pixels
+ * input: outFile - pointer to file to which image is to be written (assumed to be open for writing in binary mode)
+ * Returns: number of bytes written to file
  */
 int writeRawData( int* red, int* green, int* blue, int imgSize, int imgWidth, FILE* outFile )
 {
@@ -477,11 +483,11 @@ int writeRawData( int* red, int* green, int* blue, int imgSize, int imgWidth, FI
     return bytesWritten;
 }
 
-/*
- * Free up memory allocated to red/green/blue arrays.
- * Param: red - red component of image pixels
- * Param: green - green component of image pixels
- * Param: blue - blue component of image pixels
+/* Function: freeAll
+ * Purpose: Free up memory allocated to red/green/blue arrays.
+ * input: red - red component of image pixels
+ * input: green - green component of image pixels
+ * input: blue - blue component of image pixels
  */
 void freeAll( int* red, int* green, int* blue )
 {
