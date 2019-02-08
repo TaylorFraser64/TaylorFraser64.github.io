@@ -1,5 +1,5 @@
 # C Projects
-
+##### If you're interested in seeing a practical application of my programming in C, be sure to view my Autonomous Robot algorithms [Here!](https://github.com/Minnietj/minnietj.github.io/tree/master/Line%20Following%20Robot)
 ### Betting Game
 A small game where money is bet and counted.\
 This program begins by asking the user how much money they have in their wallet. This money will be tracked for the rest of the game.\
