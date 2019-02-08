@@ -8,10 +8,14 @@ In case of a win, the user wins their bet.\
 In case of a loss, the user loses it.\
 Should the user run out of money, the game will end.
 ### Image Manipulator
-A program to manipulate bitmap image colour, brightness, and more.\
+This program was designed to manipulate various aspects of bitmap images.
 This program makes extensive use of arrays and file access.\
 Each pixel of the image is stored in the form of three arrays, one each for the red, blue, and green values of the pixel's colour.\
 This program can be used to convert the image to grayscale, apply a colour filter, or create the image's negative.\
+Grayscale is achieved by measuring the highest of the R G and B values in each pixel, and equating the corresponding element in each array to this maximum.\
+Colour filters are achieved by setting two of the array colours to zero.\
+Negative images are accomplished by getting the absolute value of 255 subtracted from the colour value.\
+A significant part of this program is dedicated to file accessing and user input.
 ### Pascals Triangle
 This program will print a pascal's triangle of a size prompted by the user.
 This program makes entensive use of loops.
